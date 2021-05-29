@@ -1,7 +1,7 @@
 {
-  "name": "journal",
-  "short_name": "journal",
-  "description": "## Build Setup",
+  "name": "Moe Journal",
+  "short_name": "Journal",
+  "description": "Hi!",
   "icons": [
     {
       "src": "/_nuxt/icons/icon_64x64.5f6a36.png",
@@ -49,5 +49,6 @@
   "start_url": "/?standalone=true",
   "display": "standalone",
   "background_color": "#ffffff",
+  "theme_color": "#F43F5E",
   "lang": "en"
 }
