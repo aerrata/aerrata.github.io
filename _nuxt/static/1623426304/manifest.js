@@ -1,1 +1,0 @@
-__NUXT_JSONP__("manifest.js", {routes:["\u002F","\u002Farticles","\u002Farticles\u002Fhow-to-boot-arch-linux-with-efistub","\u002Farticles\u002Ffix-gitignore-not-ignoring-files","\u002Fcategories\u002Flinux","\u002Fcategories\u002Fgit"]})
