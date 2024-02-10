@@ -1,4 +1,42 @@
-<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v4.3.5"><title>Virtual Column In Laravel Migration</title><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/index.DCV4NYKQ.css" /><script type="module" src="/_astro/hoisted.Dozm1tcg.js"></script></head><body class="font-sans antialiased bg-zinc-950 text-zinc-50 text-sm sm:text-base"> <nav class="flex justify-center fixed top-0 left-0 right-0 z-50 px-4"> <div class="w-full max-w-sm md:max-w-2xl lg:max-w-5xl py-12"> <div class="flex items-center justify-between"> <div> <a href="/"> <img src="/_astro/hecker.Dslp7-O6_eeR8r.avif" alt="hecker" class="rounded-full h-10 w-10 animate-spin-slowest" width="1280" height="1024" loading="lazy" decoding="async"> </a> </div> <div class="flex items-center"> <a href="/posts" class="font-semibold text-sm border-b-2 border-zinc-50 border-zinc-50">Today I Learned;</a> </div> </div> </div> </nav>  <div class="flex justify-center px-4"> <div class="w-full max-w-sm md:max-w-2xl py-32"> <h1 class="text-2xl md:text-3xl font-bold pb-6">Virtual Column In Laravel Migration</h1> <div class="flex text-xs sm:text-sm text-zinc-400 tracking-wider space-x-2"> <p> <time datetime="2023-02-10T00:00:00.000Z"> Feb 10, 2023 </time> </p> <span>&middot;</span> <a href="/tags/laravel">#laravel</a> </div>  <article class="prose prose-sm sm:prose-base prose-zinc prose-invert max-w-none mt-20"> <p>Virtual columns are columns that are not physically stored in the database but calculated on-the-fly.</p>
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v4.3.5"><title>Virtual Column In Laravel Migration</title><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/index.DPhAIw1_.css" />
+<style>@keyframes astroFadeInOut{0%{opacity:1}to{opacity:0}}@keyframes astroFadeIn{0%{opacity:0}}@keyframes astroFadeOut{to{opacity:0}}@keyframes astroSlideFromRight{0%{transform:translate(100%)}}@keyframes astroSlideFromLeft{0%{transform:translate(-100%)}}@keyframes astroSlideToRight{to{transform:translate(100%)}}@keyframes astroSlideToLeft{to{transform:translate(-100%)}}@media (prefers-reduced-motion){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}[data-astro-transition-scope]{animation:none!important}}
+</style><script type="module" src="/_astro/hoisted.Dozm1tcg.js"></script><style>[data-astro-transition-scope="astro-qzijietr-1"] { view-transition-name: post-virtual-column-in-laravel-migration; }@layer astro { ::view-transition-old(post-virtual-column-in-laravel-migration) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(post-virtual-column-in-laravel-migration) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(post-virtual-column-in-laravel-migration) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(post-virtual-column-in-laravel-migration) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-qzijietr-1"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-qzijietr-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-qzijietr-1"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-qzijietr-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-qzijietr-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-qzijietr-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-qzijietr-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-qzijietr-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style></head><body class="font-sans antialiased bg-zinc-950 text-zinc-50 text-sm md:text-base"> <nav class="flex justify-center fixed top-0 left-0 right-0 z-50 px-4"> <div class="w-full max-w-sm md:max-w-2xl lg:max-w-5xl py-12"> <div class="flex items-center justify-between"> <div> <a href="/"> <img src="/_astro/hecker.Dslp7-O6_eeR8r.avif" alt="hecker" class="rounded-full h-10 w-10 animate-spin-slowest" width="1280" height="1024" loading="lazy" decoding="async"> </a> </div> <div class="flex items-center"> <a href="/posts" class="font-semibold text-sm border-b-2 border-dashed border-zinc-50">Today I Learned;</a> </div> </div> </div> </nav>  <div class="flex justify-center px-4"> <div class="w-full max-w-sm md:max-w-2xl py-32"> <h1 class="text-2xl md:text-3xl font-bold pb-6" data-astro-transition-scope="astro-qzijietr-1">Virtual Column In Laravel Migration</h1> <div class="flex text-xs md:text-sm text-zinc-400 tracking-wider space-x-2"> <p> <time datetime="2023-02-10T00:00:00.000Z"> Feb 10, 2023 </time> </p> <span>&middot;</span> <a href="/tags/laravel">#laravel</a> </div>  <article class="prose prose-sm md:prose-base prose-zinc prose-invert prose-code:text-xs md:prose-code:text-sm max-w-none mt-20"> <p>Virtual columns are columns that are not physically stored in the database but calculated on-the-fly.</p>
 <pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#79B8FF">Schema</span><span style="color:#F97583">::</span><span style="color:#B392F0">create</span><span style="color:#BBBBBB">(</span><span style="color:#FFAB70">'posts'</span><span style="color:#BBBBBB">,</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> (</span><span style="color:#79B8FF">Blueprint</span><span style="color:#B392F0"> $table) {</span></span>
 <span class="line"><span style="color:#B392F0">    $table</span><span style="color:#F97583">-></span><span style="color:#B392F0">id</span><span style="color:#BBBBBB">()</span><span style="color:#B392F0">;</span></span>
 <span class="line"><span style="color:#B392F0">    $table</span><span style="color:#F97583">-></span><span style="color:#B392F0">json</span><span style="color:#BBBBBB">(</span><span style="color:#FFAB70">'meta'</span><span style="color:#BBBBBB">)</span><span style="color:#F97583">-></span><span style="color:#B392F0">nullable</span><span style="color:#BBBBBB">()</span><span style="color:#B392F0">;</span></span>
