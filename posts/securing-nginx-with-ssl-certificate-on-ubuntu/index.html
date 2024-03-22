@@ -58,7 +58,7 @@
 <span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">apt</span><span style="color:#9DB1C5"> install</span><span style="color:#9DB1C5"> nginx</span></span></code></pre>
 <h3 id="configure-nginx">Configure NGINX</h3>
 <p>Navigate to the NGINX configuration directory. The main configuration file is typically located at <code>/etc/nginx/nginx.conf</code>, while server block configurations reside in <code>/etc/nginx/sites-available/</code>, open your sites config file, eg: <code>/etc/nginx/sites-available/foo.conf</code>.</p>
-<h3 id="create-server-block-configuration">Create Server Block Configuration</h3>
+<h3 id="update-nginx-server-block-configuration">Update NGINX Server Block Configuration</h3>
 <p>Edit the default server block configuration or create a new one for your Laravel application. Below is a sample configuration:</p>
 <pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">server</span><span style="color:#B392F0"> {</span></span>
 <span class="line"><span style="color:#F97583">    listen </span><span style="color:#B392F0">80;</span></span>
