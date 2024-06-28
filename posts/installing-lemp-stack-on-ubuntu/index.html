@@ -49,16 +49,14 @@
 <p>So, next time you login to the server like this;</p>
 <pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#B392F0">ssh </span><span style="color:#9DB1C5">foo@ip</span></span></code></pre>
 <h4 id="setup-zsh-1">Setup ZSH <sup><a href="#user-content-fn-1" id="user-content-fnref-1" data-footnote-ref="" aria-describedby="footnote-label">1</a></sup></h4>
-<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#B392F0">sh </span><span style="color:#9DB1C5">-c</span><span style="color:#FFAB70"> "$(</span><span style="color:#B392F0">curl</span><span style="color:#9DB1C5"> -fsSL</span><span style="color:#9DB1C5"> https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh</span><span style="color:#FFAB70">)"</span></span></code></pre>
-<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#B392F0">nano </span><span style="color:#9DB1C5">~/.zshrc</span></span>
-<span class="line"><span style="color:#B392F0">source </span><span style="color:#9DB1C5">~/.zshrc</span></span></code></pre>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#B392F0">sh </span><span style="color:#9DB1C5">-c</span><span style="color:#FFAB70"> "$(</span><span style="color:#B392F0">curl</span><span style="color:#9DB1C5"> -fsSL</span><span style="color:#9DB1C5"> https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh</span><span style="color:#FFAB70">)"</span></span>
+<span class="line"><span style="color:#B392F0">nano </span><span style="color:#9DB1C5">~/.zshrc</span></span></code></pre>
 <pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0"><code><span class="line"><span>...</span></span>
 <span class="line"><span></span></span>
 <span class="line"><span>echo "Server @ $(hostname -I)"</span></span>
 <span class="line"><span></span></span>
-<span class="line"><span>alias pa="php artisan"</span></span>
-<span class="line"><span></span></span>
-<span class="line"><span>...</span></span></code></pre>
+<span class="line"><span>alias pa="php artisan"</span></span></code></pre>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#B392F0">source </span><span style="color:#9DB1C5">~/.zshrc</span></span></code></pre>
 <h4 id="install-essential-tools--utility">Install Essential Tools &#x26; Utility</h4>
 <pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">apt</span><span style="color:#9DB1C5"> install</span><span style="color:#9DB1C5"> curl</span><span style="color:#9DB1C5"> git</span><span style="color:#9DB1C5"> zsh</span><span style="color:#9DB1C5"> ranger</span><span style="color:#9DB1C5"> neofetch</span></span></code></pre>
 <h3 id="install-php--composer">Install PHP &#x26; Composer</h3>
