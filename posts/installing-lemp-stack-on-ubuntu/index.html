@@ -81,6 +81,13 @@
 <span class="line"><span style="color:#F97583">    listen </span><span style="color:#B392F0">80;</span></span>
 <span class="line"><span style="color:#F97583">    listen </span><span style="color:#B392F0">[::]:80;</span></span>
 <span class="line"><span style="color:#F97583">    server_name </span><span style="color:#B392F0">example.com;</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#F8F8F8"> 301</span><span style="color:#B392F0"> https://$host$request_uri;</span></span>
+<span class="line"><span style="color:#B392F0">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">server</span><span style="color:#B392F0"> {</span></span>
+<span class="line"><span style="color:#F97583">    listen </span><span style="color:#B392F0">80;</span></span>
+<span class="line"><span style="color:#F97583">    listen </span><span style="color:#B392F0">[::]:80;</span></span>
+<span class="line"><span style="color:#F97583">    server_name </span><span style="color:#B392F0">example.com;</span></span>
 <span class="line"><span style="color:#F97583">    root </span><span style="color:#B392F0">/srv/example.com/public;</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#6B737C">    # ssl_certificate /etc/ssl/certs/cert_bundle.crt; # Update this</span></span>
