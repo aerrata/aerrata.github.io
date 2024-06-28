@@ -61,9 +61,9 @@
 <h3 id="install-php--composer">Install PHP &#x26; Composer</h3>
 <pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">add-apt-repository</span><span style="color:#9DB1C5"> ppa:ondrej/php</span></span>
 <span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">apt</span><span style="color:#9DB1C5"> update</span></span>
-<span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">apt</span><span style="color:#9DB1C5"> install</span><span style="color:#9DB1C5"> php8.3</span><span style="color:#9DB1C5"> php8.3-fpm</span><span style="color:#9DB1C5"> php8.3-mysql</span><span style="color:#9DB1C5"> php8.3-xml</span><span style="color:#9DB1C5"> php8.3-mbstring</span><span style="color:#9DB1C5"> php8.3-curl</span><span style="color:#9DB1C5"> php8.3-zip</span><span style="color:#9DB1C5"> php8.3-bcmath</span><span style="color:#9DB1C5"> php8.3-gd</span></span>
-<span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">update-alternatives</span><span style="color:#9DB1C5"> --config</span><span style="color:#9DB1C5"> php</span><span style="color:#6B737C"> # In case you have multiple PHP versions</span></span></code></pre>
-<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0"><code><span class="line"><span>mysql -u user -p -D database &#x3C; database.sql</span></span></code></pre>
+<span class="line"><span style="color:#B392F0">PHP_VERSION</span><span style="color:#F97583">=</span><span style="color:#F8F8F8">8.3</span></span>
+<span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">apt</span><span style="color:#9DB1C5"> install</span><span style="color:#9DB1C5"> php</span><span style="color:#B392F0">$PHP_VERSION </span><span style="color:#9DB1C5">php</span><span style="color:#B392F0">$PHP_VERSION</span><span style="color:#9DB1C5">-fpm</span><span style="color:#9DB1C5"> php</span><span style="color:#B392F0">$PHP_VERSION</span><span style="color:#9DB1C5">-mysql</span><span style="color:#9DB1C5"> php</span><span style="color:#B392F0">$PHP_VERSION</span><span style="color:#9DB1C5">-xml</span><span style="color:#9DB1C5"> php</span><span style="color:#B392F0">$PHP_VERSION</span><span style="color:#9DB1C5">-mbstring</span><span style="color:#9DB1C5"> php</span><span style="color:#B392F0">$PHP_VERSION</span><span style="color:#9DB1C5">-curl</span><span style="color:#9DB1C5"> php</span><span style="color:#B392F0">$PHP_VERSION</span><span style="color:#9DB1C5">-zip</span><span style="color:#9DB1C5"> php</span><span style="color:#B392F0">$PHP_VERSION</span><span style="color:#9DB1C5">-bcmath</span><span style="color:#9DB1C5"> php</span><span style="color:#B392F0">$PHP_VERSION</span><span style="color:#9DB1C5">-gd</span></span>
+<span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">update-alternatives</span><span style="color:#9DB1C5"> --config</span><span style="color:#9DB1C5"> php</span><span style="color:#6B737C"> # Switch PHP version, in case you have multiple versions</span></span></code></pre>
 <pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">apt</span><span style="color:#9DB1C5"> install</span><span style="color:#9DB1C5"> composer</span></span></code></pre>
 <h3 id="installing-mysql">Installing MySQL</h3>
 <pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">apt</span><span style="color:#9DB1C5"> install</span><span style="color:#9DB1C5"> mysql-server</span></span>
@@ -72,6 +72,7 @@
 <pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">CREATE</span><span style="color:#F97583"> USER</span><span style="color:#B392F0"> 'user'@</span><span style="color:#FFAB70">'%'</span><span style="color:#B392F0"> IDENTIFIED </span><span style="color:#F97583">BY</span><span style="color:#FFAB70"> 'password'</span><span style="color:#B392F0">;</span></span>
 <span class="line"><span style="color:#F97583">GRANT</span><span style="color:#B392F0"> ALL PRIVILEGES </span><span style="color:#F97583">ON</span><span style="color:#F97583"> database</span><span style="color:#B392F0">.</span><span style="color:#F97583">*</span><span style="color:#F97583"> TO</span><span style="color:#FFAB70"> 'user'</span><span style="color:#B392F0">@</span><span style="color:#FFAB70">'%'</span><span style="color:#B392F0">;</span></span>
 <span class="line"><span style="color:#B392F0">FLUSH PRIVILEGES;</span></span></code></pre>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0"><code><span class="line"><span>mysql -u user -p -D database &#x3C; database.sql</span></span></code></pre>
 <p>MySQL config file located at <code>/etc/mysql/mysql.conf.d/mysqld.cnf</code></p>
 <pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#B392F0">mysql </span><span style="color:#F97583">-</span><span style="color:#B392F0">u user </span><span style="color:#F97583">-</span><span style="color:#B392F0">p </span><span style="color:#F97583">-</span><span style="color:#B392F0">h ip</span></span></code></pre>
 <h3 id="setup-nginx">Setup NGINX</h3>
@@ -84,30 +85,30 @@
 <span class="line"></span>
 <span class="line"><span style="color:#6B737C">    # ssl_certificate /etc/ssl/certs/cert_bundle.crt; # Update this</span></span>
 <span class="line"><span style="color:#6B737C">    # ssl_certificate_key /etc/ssl/private/your_private_key.key; # Update this</span></span>
-<span class="line"><span style="color:#B392F0"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#F97583">    add_header </span><span style="color:#B392F0">X-Frame-Options </span><span style="color:#FFAB70">"SAMEORIGIN"</span><span style="color:#B392F0">;</span></span>
 <span class="line"><span style="color:#F97583">    add_header </span><span style="color:#B392F0">X-Content-Type-Options </span><span style="color:#FFAB70">"nosniff"</span><span style="color:#B392F0">;</span></span>
-<span class="line"><span style="color:#B392F0"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#F97583">    index </span><span style="color:#B392F0">index.php;</span></span>
-<span class="line"><span style="color:#B392F0"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#F97583">    charset </span><span style="color:#B392F0">utf-8;</span></span>
-<span class="line"><span style="color:#B392F0"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#F97583">    location</span><span style="color:#B392F0"> / {</span></span>
 <span class="line"><span style="color:#F97583">        try_files </span><span style="color:#B392F0">$uri $uri/ /index.php?$query_string;</span></span>
 <span class="line"><span style="color:#B392F0">    }</span></span>
-<span class="line"><span style="color:#B392F0"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#F97583">    location</span><span style="color:#F97583"> =</span><span style="color:#FFAB70"> /favicon.ico </span><span style="color:#B392F0">{</span><span style="color:#F97583"> access_log </span><span style="color:#B392F0">off;</span><span style="color:#F97583"> log_not_found </span><span style="color:#B392F0">off; }</span></span>
 <span class="line"><span style="color:#F97583">    location</span><span style="color:#F97583"> =</span><span style="color:#FFAB70"> /robots.txt  </span><span style="color:#B392F0">{</span><span style="color:#F97583"> access_log </span><span style="color:#B392F0">off;</span><span style="color:#F97583"> log_not_found </span><span style="color:#B392F0">off; }</span></span>
-<span class="line"><span style="color:#B392F0"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#F97583">    error_page </span><span style="color:#B392F0">404 /index.php;</span></span>
-<span class="line"><span style="color:#B392F0"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#F97583">    location</span><span style="color:#F97583"> ~</span><span style="color:#FFAB70"> \.php$ </span><span style="color:#B392F0">{</span></span>
 <span class="line"><span style="color:#F97583">        fastcgi_pass </span><span style="color:#B392F0">unix:/var/run/php/php8.3-fpm.sock;</span></span>
 <span class="line"><span style="color:#F97583">        fastcgi_param </span><span style="color:#B392F0">SCRIPT_FILENAME $realpath_root$fastcgi_script_name;</span></span>
 <span class="line"><span style="color:#F97583">        include </span><span style="color:#B392F0">fastcgi_params;</span></span>
 <span class="line"><span style="color:#F97583">        fastcgi_hide_header </span><span style="color:#B392F0">X-Powered-By;</span></span>
 <span class="line"><span style="color:#B392F0">    }</span></span>
-<span class="line"><span style="color:#B392F0"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#F97583">    location</span><span style="color:#F97583"> ~</span><span style="color:#FFAB70"> /\.(?!well-known).* </span><span style="color:#B392F0">{</span></span>
 <span class="line"><span style="color:#F97583">        deny </span><span style="color:#B392F0">all;</span></span>
 <span class="line"><span style="color:#B392F0">    }</span></span>
@@ -120,7 +121,8 @@
 <h4 id="nodejs-via-nvm-2">Node.js via NVM <sup><a href="#user-content-fn-2" id="user-content-fnref-2" data-footnote-ref="" aria-describedby="footnote-label">2</a></sup></h4>
 <pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#B392F0">curl </span><span style="color:#9DB1C5">-o-</span><span style="color:#9DB1C5"> https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> bash</span></span>
 <span class="line"><span style="color:#F97583">export</span><span style="color:#B392F0"> NVM_DIR</span><span style="color:#F97583">=</span><span style="color:#FFAB70">"$HOME/.nvm"</span><span style="color:#B392F0">\n</span><span style="color:#9DB1C5">[</span><span style="color:#B392F0"> -s </span><span style="color:#FFAB70">"$NVM_DIR/nvm.sh"</span><span style="color:#9DB1C5"> ]</span><span style="color:#BBBBBB"> &#x26;&#x26;</span><span style="color:#B392F0"> \. </span><span style="color:#FFAB70">"$NVM_DIR/nvm.sh"</span></span>
-<span class="line"><span style="color:#B392F0">nvm </span><span style="color:#9DB1C5">install</span><span style="color:#F8F8F8"> 22</span></span>
+<span class="line"><span style="color:#B392F0">NODE_VERSION</span><span style="color:#F97583">=</span><span style="color:#F8F8F8">22</span></span>
+<span class="line"><span style="color:#B392F0">nvm </span><span style="color:#9DB1C5">install</span><span style="color:#B392F0"> $NODE_VERSION</span></span>
 <span class="line"><span style="color:#B392F0">node </span><span style="color:#9DB1C5">-v</span></span></code></pre>
 <h4 id="bun-3">Bun <sup><a href="#user-content-fn-3" id="user-content-fnref-3" data-footnote-ref="" aria-describedby="footnote-label">3</a></sup></h4>
 <pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#B392F0">curl </span><span style="color:#9DB1C5">-fsSL</span><span style="color:#9DB1C5"> https://bun.sh/install</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> bash</span></span>
@@ -131,8 +133,7 @@
 <p>Laravel will need to write to the bootstrap/cache and storage directories, so you should ensure the web server process owner has permission to write to these directories.</p>
 <pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">chown</span><span style="color:#9DB1C5"> -R</span><span style="color:#9DB1C5"> foo:foo</span><span style="color:#9DB1C5"> /var/www/laravel</span></span>
 <span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">chmod</span><span style="color:#9DB1C5"> -R</span><span style="color:#F8F8F8"> 755</span><span style="color:#9DB1C5"> /var/www/laravel</span></span>
-<span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">chown</span><span style="color:#9DB1C5"> -R</span><span style="color:#9DB1C5"> www-data:www-data</span><span style="color:#9DB1C5"> /var/www/laravel/storage</span></span>
-<span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">chown</span><span style="color:#9DB1C5"> -R</span><span style="color:#9DB1C5"> www-data:www-data</span><span style="color:#9DB1C5"> /var/www/laravel/bootstrap/cache</span></span></code></pre>
+<span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">chown</span><span style="color:#9DB1C5"> -R</span><span style="color:#9DB1C5"> www-data:www-data</span><span style="color:#9DB1C5"> /var/www/laravel/storage</span><span style="color:#9DB1C5"> /var/www/laravel/bootstrap/cache</span></span></code></pre>
 <pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#B392F0">composer </span><span style="color:#9DB1C5">install</span></span>
 <span class="line"><span style="color:#B392F0">npm </span><span style="color:#9DB1C5">ci</span></span>
 <span class="line"><span style="color:#B392F0">npm </span><span style="color:#9DB1C5">run</span><span style="color:#9DB1C5"> build</span></span>
@@ -142,6 +143,10 @@
 <span class="line"><span style="color:#B392F0">pa </span><span style="color:#9DB1C5">migrate:fresh</span><span style="color:#9DB1C5"> --seed</span></span></code></pre>
 <h3 id="verify">Verify</h3>
 <p>Verify by accessing your site using domain or ip address in the web browser.</p>
+<h3 id="troubleshooting">Troubleshooting</h3>
+<ol>
+<li><code>ERROR 1227 (42000) at line ...: Access denied; you need (at least one of) the SUPER privilege(s) for this operation</code></li>
+</ol>
 <section data-footnotes="" class="footnotes"><h2 class="sr-only" id="footnote-label">Footnotes</h2>
 <ol>
 <li id="user-content-fn-1">
