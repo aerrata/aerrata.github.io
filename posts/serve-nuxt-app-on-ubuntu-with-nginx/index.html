@@ -95,7 +95,7 @@
 <pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">ufw</span><span style="color:#9DB1C5"> allow</span><span style="color:#FFAB70"> 'Nginx Full'</span></span></code></pre>
 <h4 id="set-up-ssl-optional">Set Up SSL (Optional)</h4>
 <p>To secure your site with HTTPS, you can use Let’s Encrypt to obtain an SSL certificate:</p>
-<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">apt-get</span><span style="color:#9DB1C5"> install</span><span style="color:#9DB1C5"> certbot</span><span style="color:#9DB1C5"> python3-certbot-nginx</span></span>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">apt</span><span style="color:#9DB1C5"> install</span><span style="color:#9DB1C5"> certbot</span><span style="color:#9DB1C5"> python3-certbot-nginx</span></span>
 <span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">certbot</span><span style="color:#9DB1C5"> --nginx</span><span style="color:#9DB1C5"> -d</span><span style="color:#9DB1C5"> example.com</span></span></code></pre>
 <h3 id="verify">Verify</h3>
 <p>Verify by accessing your site using domain or ip address in the web browser.</p>
