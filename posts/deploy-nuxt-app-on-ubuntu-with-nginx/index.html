@@ -73,6 +73,8 @@
 <span class="line"><span style="color:#B392F0">pm2 </span><span style="color:#9DB1C5">save</span><span style="color:#6B737C"> # Save the process lists</span></span>
 <span class="line"><span style="color:#B392F0">pm2 </span><span style="color:#9DB1C5">startup</span><span style="color:#9DB1C5"> systemd</span><span style="color:#6B737C"> # Ensure to start the daemon on reboot</span></span>
 <span class="line"><span style="color:#B392F0">pm2 </span><span style="color:#9DB1C5">list</span><span style="color:#6B737C"> # See all processes</span></span></code></pre>
+<p>If you update the code, just reload pm2;</p>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#B392F0">pm2 </span><span style="color:#9DB1C5">reload</span><span style="color:#9DB1C5"> ecosystem.config.cjs</span></span></code></pre>
 <h3 id="setup-nginx">Setup NGINX</h3>
 <pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">apt</span><span style="color:#9DB1C5"> install</span><span style="color:#9DB1C5"> nginx</span></span>
 <span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">nano</span><span style="color:#9DB1C5"> /etc/nginx/sites-available/nuxt-app</span></span></code></pre>
