@@ -1,7 +1,7 @@
-<!DOCTYPE html><html lang="en" class="dark"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.ico"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v4.3.5"><title>Markdown Kitchen Sink</title><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/index.DyqgIYuJ.css" />
+<!DOCTYPE html><html lang="en" class="dark"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.ico"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v4.15.10"><title>Markdown Kitchen Sink</title><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/index.Cwrh9Fxu.css">
 <style>.footnotes{margin-top:3.5rem}@media (min-width: 768px){.footnotes{margin-top:6rem}}.footnotes ol li p{margin:0}
-@keyframes astroFadeInOut{0%{opacity:1}to{opacity:0}}@keyframes astroFadeIn{0%{opacity:0}}@keyframes astroFadeOut{to{opacity:0}}@keyframes astroSlideFromRight{0%{transform:translate(100%)}}@keyframes astroSlideFromLeft{0%{transform:translate(-100%)}}@keyframes astroSlideToRight{to{transform:translate(100%)}}@keyframes astroSlideToLeft{to{transform:translate(-100%)}}@media (prefers-reduced-motion){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}[data-astro-transition-scope]{animation:none!important}}
-</style><script type="module" src="/_astro/hoisted.Dozm1tcg.js"></script><style>[data-astro-transition-scope="astro-qzijietr-1"] { view-transition-name: post-markdown; }@layer astro { ::view-transition-old(post-markdown) { 
+@keyframes astroFadeInOut{0%{opacity:1}to{opacity:0}}@keyframes astroFadeIn{0%{opacity:0;mix-blend-mode:plus-lighter}to{opacity:1;mix-blend-mode:plus-lighter}}@keyframes astroFadeOut{0%{opacity:1;mix-blend-mode:plus-lighter}to{opacity:0;mix-blend-mode:plus-lighter}}@keyframes astroSlideFromRight{0%{transform:translate(100%)}}@keyframes astroSlideFromLeft{0%{transform:translate(-100%)}}@keyframes astroSlideToRight{to{transform:translate(100%)}}@keyframes astroSlideToLeft{to{transform:translate(-100%)}}@media (prefers-reduced-motion){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}[data-astro-transition-scope]{animation:none!important}}
+</style><script type="module" src="/_astro/hoisted.fDDyMQpn.js"></script><style>[data-astro-transition-scope="astro-qzijietr-1"] { view-transition-name: post-markdown; }@layer astro { ::view-transition-old(post-markdown) { 
 	animation-duration: 180ms;
 	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
 	animation-fill-mode: both;
@@ -96,11 +96,12 @@
 
 <table><thead><tr><th>Syntax</th><th>Description</th></tr></thead><tbody><tr><td>Header</td><td>Title</td></tr><tr><td>Paragraph</td><td>Text</td></tr></tbody></table>
 <h3 id="fenced-code-block">Fenced Code Block</h3>
-<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0"><code><span class="line"><span>{</span></span>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>{</span></span>
 <span class="line"><span>  "firstName": "John",</span></span>
 <span class="line"><span>  "lastName": "Smith",</span></span>
 <span class="line"><span>  "age": 25</span></span>
-<span class="line"><span>}</span></span></code></pre>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span></code></pre>
 <h3 id="footnote">Footnote</h3>
 <p>Here’s a sentence with a footnote. <sup><a href="#user-content-fn-1" id="user-content-fnref-1" data-footnote-ref="" aria-describedby="footnote-label">1</a></sup></p>
 <h3 id="heading-id">Heading ID</h3>
@@ -141,7 +142,7 @@ end tell
 <p>We hear you, but we’re not convinced that simply disabling our base styles is what you really want. You don’t want to have to remove annoying margins every time you use a <code>p</code> element in a piece of your dashboard UI. And I doubt you really want your blog posts to use the user-agent styles either — you want them to look <em>awesome</em>, not awful.</p>
 <p>The <code>@tailwindcss/typography</code> plugin is our attempt to give you what you <em>actually</em> want, without any of the downsides of doing something stupid like disabling our base styles.</p>
 <p>It adds a new <code>prose</code> class that you can slap on any block of vanilla HTML content and turn it into a beautiful, well-formatted document:</p>
-<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0"><code><span class="line"><span>&#x3C;article class="prose"></span></span>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>&#x3C;article class="prose"></span></span>
 <span class="line"><span>  &#x3C;h1>Garlic bread with cheese: What the science tells us&#x3C;/h1></span></span>
 <span class="line"><span>  &#x3C;p></span></span>
 <span class="line"><span>    For years parents have espoused the health benefits of eating garlic bread with cheese to their</span></span>
@@ -153,7 +154,8 @@ end tell
 <span class="line"><span>    springing up around the country.</span></span>
 <span class="line"><span>  &#x3C;/p></span></span>
 <span class="line"><span>  &#x3C;!-- ... --></span></span>
-<span class="line"><span>&#x3C;/article></span></span></code></pre>
+<span class="line"><span>&#x3C;/article></span></span>
+<span class="line"><span></span></span></code></pre>
 <p>For more information about how to use the plugin and the features it includes, <a href="https://github.com/tailwindcss/typography/blob/master/README.md">read the documentation</a>.</p>
 <hr>
 <h2 id="what-to-expect-from-here-on-out">What to expect from here on out</h2>
@@ -205,14 +207,15 @@ end tell
 <h2 id="code-should-look-okay-by-default">Code should look okay by default.</h2>
 <p>I think most people are going to use <a href="https://highlightjs.org/">highlight.js</a> or <a href="https://prismjs.com/">Prism</a> or something if they want to style their code blocks but it wouldn’t hurt to make them look <em>okay</em> out of the box, even with no syntax highlighting.</p>
 <p>Here’s what a default <code>tailwind.config.js</code> file looks like at the time of writing:</p>
-<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0"><code><span class="line"><span>module.exports = {</span></span>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>module.exports = {</span></span>
 <span class="line"><span>  purge: [],</span></span>
 <span class="line"><span>  theme: {</span></span>
 <span class="line"><span>    extend: {},</span></span>
 <span class="line"><span>  },</span></span>
 <span class="line"><span>  variants: {},</span></span>
 <span class="line"><span>  plugins: [],</span></span>
-<span class="line"><span>}</span></span></code></pre>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span></code></pre>
 <p>Hopefully that looks good enough to you.</p>
 <h3 id="what-about-nested-lists">What about nested lists?</h3>
 <p>Nested lists basically always look bad which is why editors like Medium don’t even let you do it, but I guess since some of you goofballs are going to do it we have to carry the burden of at least making it work.</p>

@@ -1,7 +1,7 @@
-<!DOCTYPE html><html lang="en" class="dark"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.ico"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v4.3.5"><title>Setup Laravel App on a LEMP Stack with Ubuntu</title><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/index.DyqgIYuJ.css" />
+<!DOCTYPE html><html lang="en" class="dark"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.ico"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v4.15.10"><title>Setup Laravel App on a LEMP Stack with Ubuntu</title><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/index.Cwrh9Fxu.css">
 <style>.footnotes{margin-top:3.5rem}@media (min-width: 768px){.footnotes{margin-top:6rem}}.footnotes ol li p{margin:0}
-@keyframes astroFadeInOut{0%{opacity:1}to{opacity:0}}@keyframes astroFadeIn{0%{opacity:0}}@keyframes astroFadeOut{to{opacity:0}}@keyframes astroSlideFromRight{0%{transform:translate(100%)}}@keyframes astroSlideFromLeft{0%{transform:translate(-100%)}}@keyframes astroSlideToRight{to{transform:translate(100%)}}@keyframes astroSlideToLeft{to{transform:translate(-100%)}}@media (prefers-reduced-motion){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}[data-astro-transition-scope]{animation:none!important}}
-</style><script type="module" src="/_astro/hoisted.Dozm1tcg.js"></script><style>[data-astro-transition-scope="astro-qzijietr-1"] { view-transition-name: post-installing-lemp-stack-on-ubuntu; }@layer astro { ::view-transition-old(post-installing-lemp-stack-on-ubuntu) { 
+@keyframes astroFadeInOut{0%{opacity:1}to{opacity:0}}@keyframes astroFadeIn{0%{opacity:0;mix-blend-mode:plus-lighter}to{opacity:1;mix-blend-mode:plus-lighter}}@keyframes astroFadeOut{0%{opacity:1;mix-blend-mode:plus-lighter}to{opacity:0;mix-blend-mode:plus-lighter}}@keyframes astroSlideFromRight{0%{transform:translate(100%)}}@keyframes astroSlideFromLeft{0%{transform:translate(-100%)}}@keyframes astroSlideToRight{to{transform:translate(100%)}}@keyframes astroSlideToLeft{to{transform:translate(-100%)}}@media (prefers-reduced-motion){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}[data-astro-transition-scope]{animation:none!important}}
+</style><script type="module" src="/_astro/hoisted.fDDyMQpn.js"></script><style>[data-astro-transition-scope="astro-qzijietr-1"] { view-transition-name: post-installing-lemp-stack-on-ubuntu; }@layer astro { ::view-transition-old(post-installing-lemp-stack-on-ubuntu) { 
 	animation-duration: 180ms;
 	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
 	animation-fill-mode: both;
@@ -40,56 +40,71 @@
 	animation-name: astroFadeIn; }</style></head><body> <nav class="fixed left-0 right-0 top-0 z-50 flex justify-center px-4"> <div class="w-full max-w-full py-12 md:max-w-2xl lg:max-w-5xl"> <div class="flex items-center justify-between"> <div> <a href="/" class="relative"> <img src="/_astro/hecker.Dslp7-O6_eeR8r.avif" alt="hecker" class="absolute inset-0 h-10 w-10 animate-[spin_30s_linear_infinite] rounded-full blur-lg transition duration-200 md:h-14 md:w-14" width="1280" height="1024" loading="lazy" decoding="async"> <img src="/_astro/hecker.Dslp7-O6_eeR8r.avif" alt="hecker" class="relative h-10 w-10 animate-[spin_30s_linear_infinite] rounded-full md:h-14 md:w-14" width="1280" height="1024" loading="lazy" decoding="async"> </a> </div> <div class="flex items-center"> <a href="/posts" class="border-b-2 text-sm font-semibold border-primary">Today I Learned;</a> </div> </div> </div> </nav>  <div class="flex justify-center px-4"> <div class="w-full max-w-full py-32 md:max-w-2xl"> <h1 class="pb-6 text-2xl font-bold md:text-3xl" data-astro-transition-scope="astro-qzijietr-1">Setup Laravel App on a LEMP Stack with Ubuntu</h1> <div class="flex space-x-2 text-xs tracking-wider text-muted-foreground md:text-sm"> <p> <time datetime="2024-06-02T00:00:00.000Z"> Jun 2, 2024 </time> </p> <span>&middot;</span> <a href="/tags/linux">#linux</a><a href="/tags/laravel">#laravel</a> </div> <div class="relative mt-20">   </div> <article class="prose prose-sm prose-foreground mt-20 max-w-none md:prose-base prose-code:text-xs md:prose-code:text-sm"> <h3 id="initial-setup">Initial Setup</h3>
 <h4 id="switch-to-root-user">Switch to <code>root</code> user</h4>
 <p>If you are not switched yet, run;</p>
-<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#B392F0">su </span><span style="color:#9DB1C5">-</span></span></code></pre>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">su </span><span style="color:#9DB1C5">-</span></span>
+<span class="line"></span></code></pre>
 <h4 id="update-system">Update system</h4>
-<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#B392F0">apt </span><span style="color:#9DB1C5">update</span></span>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">apt </span><span style="color:#9DB1C5">update</span></span>
 <span class="line"><span style="color:#B392F0">apt </span><span style="color:#9DB1C5">upgrade</span></span>
-<span class="line"><span style="color:#B392F0">apt </span><span style="color:#9DB1C5">dist-upgrade</span></span></code></pre>
+<span class="line"><span style="color:#B392F0">apt </span><span style="color:#9DB1C5">dist-upgrade</span></span>
+<span class="line"></span></code></pre>
 <h4 id="create-a-non-root-user">Create a Non <code>root</code> User</h4>
 <p>Using <code>root</code> user is discouraged, create a new normal user instead.</p>
-<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#B392F0">adduser </span><span style="color:#9DB1C5">foo</span></span>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">adduser </span><span style="color:#9DB1C5">foo</span></span>
 <span class="line"><span style="color:#B392F0">usermod </span><span style="color:#9DB1C5">-aG</span><span style="color:#9DB1C5"> sudo</span><span style="color:#9DB1C5"> foo</span></span>
-<span class="line"><span style="color:#B392F0">su </span><span style="color:#9DB1C5">foo</span><span style="color:#6B737C"> # Switch to user 'foo'</span></span></code></pre>
+<span class="line"><span style="color:#B392F0">su </span><span style="color:#9DB1C5">foo</span><span style="color:#6B737C"> # Switch to user 'foo'</span></span>
+<span class="line"></span></code></pre>
 <p>So, next time you login to the server like this;</p>
-<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#B392F0">ssh </span><span style="color:#9DB1C5">foo@ip</span></span></code></pre>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">ssh </span><span style="color:#9DB1C5">foo@ip</span></span>
+<span class="line"></span></code></pre>
 <h4 id="setup-zsh-1">Setup ZSH <sup><a href="#user-content-fn-1" id="user-content-fnref-1" data-footnote-ref="" aria-describedby="footnote-label">1</a></sup></h4>
-<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#B392F0">sh </span><span style="color:#9DB1C5">-c</span><span style="color:#FFAB70"> "$(</span><span style="color:#B392F0">curl</span><span style="color:#9DB1C5"> -fsSL</span><span style="color:#9DB1C5"> https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh</span><span style="color:#FFAB70">)"</span></span>
-<span class="line"><span style="color:#B392F0">nano </span><span style="color:#9DB1C5">~/.zshrc</span></span></code></pre>
-<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0"><code><span class="line"><span>...</span></span>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sh </span><span style="color:#9DB1C5">-c</span><span style="color:#FFAB70"> "$(</span><span style="color:#B392F0">curl</span><span style="color:#9DB1C5"> -fsSL</span><span style="color:#9DB1C5"> https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh</span><span style="color:#FFAB70">)"</span></span>
+<span class="line"><span style="color:#B392F0">nano </span><span style="color:#9DB1C5">~/.zshrc</span></span>
+<span class="line"></span></code></pre>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>...</span></span>
 <span class="line"><span>echo "Server @ $(hostname -I)"</span></span>
 <span class="line"><span></span></span>
-<span class="line"><span>alias pa="php artisan"</span></span></code></pre>
-<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#B392F0">source </span><span style="color:#9DB1C5">~/.zshrc</span></span></code></pre>
+<span class="line"><span>alias pa="php artisan"</span></span>
+<span class="line"><span></span></span></code></pre>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">source </span><span style="color:#9DB1C5">~/.zshrc</span></span>
+<span class="line"></span></code></pre>
 <h4 id="install-essential-tools--utility">Install Essential Tools &#x26; Utility</h4>
-<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">apt</span><span style="color:#9DB1C5"> install</span><span style="color:#9DB1C5"> curl</span><span style="color:#9DB1C5"> git</span><span style="color:#9DB1C5"> zsh</span><span style="color:#9DB1C5"> ranger</span><span style="color:#9DB1C5"> neofetch</span></span></code></pre>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">apt</span><span style="color:#9DB1C5"> install</span><span style="color:#9DB1C5"> curl</span><span style="color:#9DB1C5"> git</span><span style="color:#9DB1C5"> zsh</span><span style="color:#9DB1C5"> ranger</span><span style="color:#9DB1C5"> neofetch</span></span>
+<span class="line"></span></code></pre>
 <h3 id="install-php--composer">Install PHP &#x26; Composer</h3>
-<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">add-apt-repository</span><span style="color:#9DB1C5"> ppa:ondrej/php</span></span>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">add-apt-repository</span><span style="color:#9DB1C5"> ppa:ondrej/php</span></span>
 <span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">apt</span><span style="color:#9DB1C5"> update</span></span>
-<span class="line"><span style="color:#B392F0">PHP_VERSION</span><span style="color:#F97583">=</span><span style="color:#F8F8F8">8.3</span></span>
+<span class="line"><span style="color:#B392F0">PHP_VERSION</span><span style="color:#F97583">=</span><span style="color:#9DB1C5">8.3</span></span>
 <span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">apt</span><span style="color:#9DB1C5"> install</span><span style="color:#9DB1C5"> php</span><span style="color:#B392F0">$PHP_VERSION </span><span style="color:#9DB1C5">php</span><span style="color:#B392F0">$PHP_VERSION</span><span style="color:#9DB1C5">-fpm</span><span style="color:#9DB1C5"> php</span><span style="color:#B392F0">$PHP_VERSION</span><span style="color:#9DB1C5">-mysql</span><span style="color:#9DB1C5"> php</span><span style="color:#B392F0">$PHP_VERSION</span><span style="color:#9DB1C5">-xml</span><span style="color:#9DB1C5"> php</span><span style="color:#B392F0">$PHP_VERSION</span><span style="color:#9DB1C5">-mbstring</span><span style="color:#9DB1C5"> php</span><span style="color:#B392F0">$PHP_VERSION</span><span style="color:#9DB1C5">-curl</span><span style="color:#9DB1C5"> php</span><span style="color:#B392F0">$PHP_VERSION</span><span style="color:#9DB1C5">-zip</span><span style="color:#9DB1C5"> php</span><span style="color:#B392F0">$PHP_VERSION</span><span style="color:#9DB1C5">-bcmath</span><span style="color:#9DB1C5"> php</span><span style="color:#B392F0">$PHP_VERSION</span><span style="color:#9DB1C5">-gd</span></span>
-<span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">update-alternatives</span><span style="color:#9DB1C5"> --config</span><span style="color:#9DB1C5"> php</span><span style="color:#6B737C"> # Switch PHP version, in case you have multiple versions</span></span></code></pre>
-<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">apt</span><span style="color:#9DB1C5"> install</span><span style="color:#9DB1C5"> composer</span></span></code></pre>
+<span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">update-alternatives</span><span style="color:#9DB1C5"> --config</span><span style="color:#9DB1C5"> php</span><span style="color:#6B737C"> # Switch PHP version, in case you have multiple versions</span></span>
+<span class="line"></span></code></pre>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">apt</span><span style="color:#9DB1C5"> install</span><span style="color:#9DB1C5"> composer</span></span>
+<span class="line"></span></code></pre>
 <h3 id="installing-mysql">Installing MySQL</h3>
-<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">apt</span><span style="color:#9DB1C5"> install</span><span style="color:#9DB1C5"> mysql-server</span></span>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">apt</span><span style="color:#9DB1C5"> install</span><span style="color:#9DB1C5"> mysql-server</span></span>
 <span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">mysql_secure_installation</span></span>
-<span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">systemctl</span><span style="color:#9DB1C5"> restart</span><span style="color:#9DB1C5"> mysql</span></span></code></pre>
-<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">CREATE</span><span style="color:#F97583"> USER</span><span style="color:#B392F0"> 'user'@</span><span style="color:#FFAB70">'%'</span><span style="color:#B392F0"> IDENTIFIED </span><span style="color:#F97583">BY</span><span style="color:#FFAB70"> 'password'</span><span style="color:#B392F0">;</span></span>
+<span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">systemctl</span><span style="color:#9DB1C5"> restart</span><span style="color:#9DB1C5"> mysql</span></span>
+<span class="line"></span></code></pre>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#F97583">CREATE</span><span style="color:#F97583"> USER</span><span style="color:#B392F0"> 'user'@</span><span style="color:#FFAB70">'%'</span><span style="color:#B392F0"> IDENTIFIED </span><span style="color:#F97583">BY</span><span style="color:#FFAB70"> 'password'</span><span style="color:#B392F0">;</span></span>
 <span class="line"><span style="color:#F97583">GRANT</span><span style="color:#B392F0"> ALL PRIVILEGES </span><span style="color:#F97583">ON</span><span style="color:#F97583"> database</span><span style="color:#B392F0">.</span><span style="color:#F97583">*</span><span style="color:#F97583"> TO</span><span style="color:#FFAB70"> 'user'</span><span style="color:#B392F0">@</span><span style="color:#FFAB70">'%'</span><span style="color:#B392F0">;</span></span>
-<span class="line"><span style="color:#B392F0">FLUSH PRIVILEGES;</span></span></code></pre>
-<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0"><code><span class="line"><span>mysql -u user -p -D database &#x3C; database.sql</span></span></code></pre>
+<span class="line"><span style="color:#B392F0">FLUSH PRIVILEGES;</span></span>
+<span class="line"></span></code></pre>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>mysql -u user -p -D database &#x3C; database.sql</span></span>
+<span class="line"><span></span></span></code></pre>
 <p>MySQL config file located at <code>/etc/mysql/mysql.conf.d/mysqld.cnf</code></p>
-<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#B392F0">mysql </span><span style="color:#F97583">-</span><span style="color:#B392F0">u user </span><span style="color:#F97583">-</span><span style="color:#B392F0">p </span><span style="color:#F97583">-</span><span style="color:#B392F0">h ip</span></span></code></pre>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#B392F0">mysql </span><span style="color:#F97583">-</span><span style="color:#B392F0">u user </span><span style="color:#F97583">-</span><span style="color:#B392F0">p </span><span style="color:#F97583">-</span><span style="color:#B392F0">h ip</span></span>
+<span class="line"></span></code></pre>
 <h3 id="setup-nginx">Setup NGINX</h3>
-<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">nano</span><span style="color:#9DB1C5"> /etc/nginx/sites-available/laravel</span></span></code></pre>
-<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">server</span><span style="color:#B392F0"> {</span></span>
-<span class="line"><span style="color:#F97583">    listen </span><span style="color:#B392F0">80;</span></span>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">nano</span><span style="color:#9DB1C5"> /etc/nginx/sites-available/laravel</span></span>
+<span class="line"></span></code></pre>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="nginx"><code><span class="line"><span style="color:#F97583">server</span><span style="color:#B392F0"> {</span></span>
+<span class="line"><span style="color:#F97583">    listen </span><span style="color:#F8F8F8">80</span><span style="color:#B392F0">;</span></span>
 <span class="line"><span style="color:#F97583">    listen </span><span style="color:#B392F0">[::]:80;</span></span>
 <span class="line"><span style="color:#F97583">    server_name </span><span style="color:#B392F0">example.com;</span></span>
 <span class="line"><span style="color:#F97583">    return</span><span style="color:#F8F8F8"> 301</span><span style="color:#B392F0"> https://$host$request_uri;</span></span>
 <span class="line"><span style="color:#B392F0">}</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#F97583">server</span><span style="color:#B392F0"> {</span></span>
-<span class="line"><span style="color:#F97583">    listen </span><span style="color:#B392F0">80;</span></span>
+<span class="line"><span style="color:#F97583">    listen </span><span style="color:#F8F8F8">80</span><span style="color:#B392F0">;</span></span>
 <span class="line"><span style="color:#F97583">    listen </span><span style="color:#B392F0">[::]:80;</span></span>
 <span class="line"><span style="color:#F97583">    server_name </span><span style="color:#B392F0">example.com;</span></span>
 <span class="line"><span style="color:#F97583">    root </span><span style="color:#B392F0">/srv/example.com/public;</span></span>
@@ -108,10 +123,10 @@
 <span class="line"><span style="color:#F97583">        try_files </span><span style="color:#B392F0">$uri $uri/ /index.php?$query_string;</span></span>
 <span class="line"><span style="color:#B392F0">    }</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#F97583">    location</span><span style="color:#F97583"> =</span><span style="color:#FFAB70"> /favicon.ico </span><span style="color:#B392F0">{</span><span style="color:#F97583"> access_log </span><span style="color:#B392F0">off;</span><span style="color:#F97583"> log_not_found </span><span style="color:#B392F0">off; }</span></span>
-<span class="line"><span style="color:#F97583">    location</span><span style="color:#F97583"> =</span><span style="color:#FFAB70"> /robots.txt  </span><span style="color:#B392F0">{</span><span style="color:#F97583"> access_log </span><span style="color:#B392F0">off;</span><span style="color:#F97583"> log_not_found </span><span style="color:#B392F0">off; }</span></span>
+<span class="line"><span style="color:#F97583">    location</span><span style="color:#F97583"> =</span><span style="color:#FFAB70"> /favicon.ico </span><span style="color:#B392F0">{</span><span style="color:#F97583"> access_log </span><span style="color:#79B8FF">off</span><span style="color:#B392F0">;</span><span style="color:#F97583"> log_not_found </span><span style="color:#79B8FF">off</span><span style="color:#B392F0">; }</span></span>
+<span class="line"><span style="color:#F97583">    location</span><span style="color:#F97583"> =</span><span style="color:#FFAB70"> /robots.txt  </span><span style="color:#B392F0">{</span><span style="color:#F97583"> access_log </span><span style="color:#79B8FF">off</span><span style="color:#B392F0">;</span><span style="color:#F97583"> log_not_found </span><span style="color:#79B8FF">off</span><span style="color:#B392F0">; }</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#F97583">    error_page </span><span style="color:#B392F0">404 /index.php;</span></span>
+<span class="line"><span style="color:#F97583">    error_page </span><span style="color:#F8F8F8">404</span><span style="color:#B392F0"> /index.php;</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#F97583">    location</span><span style="color:#F97583"> ~</span><span style="color:#FFAB70"> \.php$ </span><span style="color:#B392F0">{</span></span>
 <span class="line"><span style="color:#F97583">        fastcgi_pass </span><span style="color:#B392F0">unix:/var/run/php/php8.3-fpm.sock;</span></span>
@@ -121,46 +136,54 @@
 <span class="line"><span style="color:#B392F0">    }</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#F97583">    location</span><span style="color:#F97583"> ~</span><span style="color:#FFAB70"> /\.(?!well-known).* </span><span style="color:#B392F0">{</span></span>
-<span class="line"><span style="color:#F97583">        deny </span><span style="color:#B392F0">all;</span></span>
+<span class="line"><span style="color:#F97583">        deny </span><span style="color:#79B8FF">all</span><span style="color:#B392F0">;</span></span>
 <span class="line"><span style="color:#B392F0">    }</span></span>
-<span class="line"><span style="color:#B392F0">}</span></span></code></pre>
-<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">ln</span><span style="color:#9DB1C5"> -s</span><span style="color:#9DB1C5"> /etc/nginx/sites-available/laravel</span><span style="color:#9DB1C5"> /etc/nginx/sites-enabled/</span></span>
+<span class="line"><span style="color:#B392F0">}</span></span>
+<span class="line"></span></code></pre>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">ln</span><span style="color:#9DB1C5"> -s</span><span style="color:#9DB1C5"> /etc/nginx/sites-available/laravel</span><span style="color:#9DB1C5"> /etc/nginx/sites-enabled/</span></span>
 <span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">nginx</span><span style="color:#9DB1C5"> -t</span></span>
 <span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">systemctl</span><span style="color:#9DB1C5"> enable</span><span style="color:#9DB1C5"> nginx</span></span>
 <span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">systemctl</span><span style="color:#9DB1C5"> restart</span><span style="color:#9DB1C5"> nginx</span></span>
 <span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">tail</span><span style="color:#9DB1C5"> -f</span><span style="color:#9DB1C5"> /var/log/nginx/error.log</span><span style="color:#6B737C"> # Check for errors</span></span>
-<span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">tail</span><span style="color:#9DB1C5"> -f</span><span style="color:#9DB1C5"> /var/log/nginx/access.log</span><span style="color:#6B737C"> # Check for errors</span></span></code></pre>
+<span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">tail</span><span style="color:#9DB1C5"> -f</span><span style="color:#9DB1C5"> /var/log/nginx/access.log</span><span style="color:#6B737C"> # Check for errors</span></span>
+<span class="line"></span></code></pre>
 <h3 id="install-nodejs">Install Node.js</h3>
 <h4 id="nodejs-via-nvm-2">Node.js via NVM <sup><a href="#user-content-fn-2" id="user-content-fnref-2" data-footnote-ref="" aria-describedby="footnote-label">2</a></sup></h4>
-<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#B392F0">curl </span><span style="color:#9DB1C5">-o-</span><span style="color:#9DB1C5"> https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> bash</span></span>
-<span class="line"><span style="color:#F97583">export</span><span style="color:#B392F0"> NVM_DIR</span><span style="color:#F97583">=</span><span style="color:#FFAB70">"$HOME/.nvm"</span><span style="color:#B392F0">\n</span><span style="color:#9DB1C5">[</span><span style="color:#B392F0"> -s </span><span style="color:#FFAB70">"$NVM_DIR/nvm.sh"</span><span style="color:#9DB1C5"> ]</span><span style="color:#BBBBBB"> &#x26;&#x26;</span><span style="color:#B392F0"> \. </span><span style="color:#FFAB70">"$NVM_DIR/nvm.sh"</span></span>
-<span class="line"><span style="color:#B392F0">NODE_VERSION</span><span style="color:#F97583">=</span><span style="color:#F8F8F8">22</span></span>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">curl </span><span style="color:#9DB1C5">-o-</span><span style="color:#9DB1C5"> https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> bash</span></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#B392F0"> NVM_DIR</span><span style="color:#F97583">=</span><span style="color:#FFAB70">"$HOME/.nvm"</span><span style="color:#B392F0">\n[ </span><span style="color:#F97583">-s</span><span style="color:#FFAB70"> "$NVM_DIR/nvm.sh"</span><span style="color:#B392F0"> ] </span><span style="color:#BBBBBB">&#x26;&#x26;</span><span style="color:#B392F0"> \. </span><span style="color:#FFAB70">"$NVM_DIR/nvm.sh"</span></span>
+<span class="line"><span style="color:#B392F0">NODE_VERSION</span><span style="color:#F97583">=</span><span style="color:#9DB1C5">22</span></span>
 <span class="line"><span style="color:#B392F0">nvm </span><span style="color:#9DB1C5">install</span><span style="color:#B392F0"> $NODE_VERSION</span></span>
-<span class="line"><span style="color:#B392F0">node </span><span style="color:#9DB1C5">-v</span></span></code></pre>
+<span class="line"><span style="color:#B392F0">node </span><span style="color:#9DB1C5">-v</span></span>
+<span class="line"></span></code></pre>
 <h4 id="bun-3">Bun <sup><a href="#user-content-fn-3" id="user-content-fnref-3" data-footnote-ref="" aria-describedby="footnote-label">3</a></sup></h4>
-<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#B392F0">curl </span><span style="color:#9DB1C5">-fsSL</span><span style="color:#9DB1C5"> https://bun.sh/install</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> bash</span></span>
-<span class="line"><span style="color:#B392F0">bun </span><span style="color:#9DB1C5">install</span><span style="color:#9DB1C5"> --frozen-lockfile</span></span></code></pre>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">curl </span><span style="color:#9DB1C5">-fsSL</span><span style="color:#9DB1C5"> https://bun.sh/install</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> bash</span></span>
+<span class="line"><span style="color:#B392F0">bun </span><span style="color:#9DB1C5">install</span><span style="color:#9DB1C5"> --frozen-lockfile</span></span>
+<span class="line"></span></code></pre>
 <h3 id="install-laravel-app-source-code">Install Laravel App Source Code</h3>
-<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#B392F0">cd</span></span>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">cd</span></span>
 <span class="line"><span style="color:#B392F0">git </span><span style="color:#9DB1C5">clone</span><span style="color:#9DB1C5"> https://user@bitbucket.org/org/laravel.git</span><span style="color:#9DB1C5"> laravel</span></span>
-<span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">mv</span><span style="color:#9DB1C5"> laravel</span><span style="color:#9DB1C5"> /var/www</span></span></code></pre>
+<span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">mv</span><span style="color:#9DB1C5"> laravel</span><span style="color:#9DB1C5"> /var/www</span></span>
+<span class="line"></span></code></pre>
 <h4 id="directory-permissions">Directory Permissions</h4>
 <p>Laravel will need to write to the bootstrap/cache and storage directories, so you should ensure the web server process owner has permission to write to these directories.</p>
-<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">chown</span><span style="color:#9DB1C5"> -R</span><span style="color:#9DB1C5"> foo:foo</span><span style="color:#9DB1C5"> /var/www/laravel</span></span>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">chown</span><span style="color:#9DB1C5"> -R</span><span style="color:#9DB1C5"> foo:foo</span><span style="color:#9DB1C5"> /var/www/laravel</span></span>
 <span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">chmod</span><span style="color:#9DB1C5"> -R</span><span style="color:#F8F8F8"> 755</span><span style="color:#9DB1C5"> /var/www/laravel</span></span>
-<span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">chown</span><span style="color:#9DB1C5"> -R</span><span style="color:#9DB1C5"> www-data:www-data</span><span style="color:#9DB1C5"> /var/www/laravel/storage</span><span style="color:#9DB1C5"> /var/www/laravel/bootstrap/cache</span></span></code></pre>
-<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#B392F0">composer </span><span style="color:#9DB1C5">install</span></span>
+<span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">chown</span><span style="color:#9DB1C5"> -R</span><span style="color:#9DB1C5"> www-data:www-data</span><span style="color:#9DB1C5"> /var/www/laravel/storage</span><span style="color:#9DB1C5"> /var/www/laravel/bootstrap/cache</span></span>
+<span class="line"></span></code></pre>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">composer </span><span style="color:#9DB1C5">install</span></span>
 <span class="line"><span style="color:#B392F0">npm </span><span style="color:#9DB1C5">ci</span></span>
 <span class="line"><span style="color:#B392F0">npm </span><span style="color:#9DB1C5">run</span><span style="color:#9DB1C5"> build</span></span>
 <span class="line"><span style="color:#B392F0">cp </span><span style="color:#9DB1C5">.env.example</span><span style="color:#9DB1C5"> .env</span></span>
 <span class="line"><span style="color:#6B737C"># Update your .env with proper info and credentials</span></span>
 <span class="line"><span style="color:#B392F0">pa </span><span style="color:#9DB1C5">key:generate</span></span>
-<span class="line"><span style="color:#B392F0">pa </span><span style="color:#9DB1C5">migrate:fresh</span><span style="color:#9DB1C5"> --seed</span></span></code></pre>
+<span class="line"><span style="color:#B392F0">pa </span><span style="color:#9DB1C5">migrate:fresh</span><span style="color:#9DB1C5"> --seed</span></span>
+<span class="line"></span></code></pre>
 <h3 id="verify">Verify</h3>
 <p>Verify by accessing your site using domain or ip address in the web browser.</p>
 <h3 id="common-linux-commands">Common Linux Commands</h3>
-<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">apt-cache</span><span style="color:#9DB1C5"> policy</span><span style="color:#9DB1C5"> {package}</span><span style="color:#6B737C"> # Check the version of installable packages</span></span>
-<span class="line"><span style="color:#B392F0">lsb_release </span><span style="color:#9DB1C5">-a</span><span style="color:#6B737C"> # Check Ubuntu release version</span></span></code></pre>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">apt-cache</span><span style="color:#9DB1C5"> policy</span><span style="color:#9DB1C5"> {package}</span><span style="color:#6B737C"> # Check the version of installable packages</span></span>
+<span class="line"><span style="color:#B392F0">lsb_release </span><span style="color:#9DB1C5">-a</span><span style="color:#6B737C"> # Check Ubuntu release version</span></span>
+<span class="line"></span></code></pre>
 <h3 id="troubleshooting">Troubleshooting</h3>
 <h4 id="mysql-error">MySQL Error</h4>
 <ol>
@@ -171,11 +194,12 @@
 <li><code>[emerg] socket() [::]:80 failed (97: Address family not supported by protocol)</code></li>
 </ol>
 <p>In <code>/etc/nginx/sites-enabled/default</code> file;</p>
-<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#B392F0">...</span></span>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="nginx"><code><span class="line"><span style="color:#B392F0">...</span></span>
 <span class="line"><span style="color:#F97583">server</span><span style="color:#B392F0"> {</span></span>
-<span class="line"><span style="color:#F97583">        listen </span><span style="color:#B392F0">80</span><span style="color:#79B8FF"> default_server</span><span style="color:#B392F0">;</span></span>
-<span class="line"><span style="color:#F97583">        listen </span><span style="color:#B392F0">[::]:80</span><span style="color:#79B8FF"> default_server</span><span style="color:#B392F0">; </span><span style="color:#6B737C"># Comment this line</span></span>
-<span class="line"><span style="color:#B392F0">...</span></span></code></pre>
+<span class="line"><span style="color:#F97583">        listen </span><span style="color:#F8F8F8">80</span><span style="color:#79B8FF"> default_server</span><span style="color:#B392F0">;</span></span>
+<span class="line"><span style="color:#F97583">        listen </span><span style="color:#B392F0">[::]:80 </span><span style="color:#79B8FF">default_server</span><span style="color:#B392F0">; </span><span style="color:#6B737C"># Comment this line</span></span>
+<span class="line"><span style="color:#B392F0">...</span></span>
+<span class="line"></span></code></pre>
 <section data-footnotes="" class="footnotes"><h2 class="sr-only" id="footnote-label">Footnotes</h2>
 <ol>
 <li id="user-content-fn-1">
