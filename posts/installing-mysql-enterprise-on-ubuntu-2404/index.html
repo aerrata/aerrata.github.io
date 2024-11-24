@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en" class="dark"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.ico"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v4.15.10"><title>Installing MySQL Enterprise on Ubuntu 24.04</title><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/index.Cwrh9Fxu.css">
+<!DOCTYPE html><html lang="en" class="dark"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.ico"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v4.15.10"><title>Installing MySQL Enterprise on Ubuntu 24.04</title><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/index._wWAm-ec.css">
 <style>.footnotes{margin-top:3.5rem}@media (min-width: 768px){.footnotes{margin-top:6rem}}.footnotes ol li p{margin:0}
 @keyframes astroFadeInOut{0%{opacity:1}to{opacity:0}}@keyframes astroFadeIn{0%{opacity:0;mix-blend-mode:plus-lighter}to{opacity:1;mix-blend-mode:plus-lighter}}@keyframes astroFadeOut{0%{opacity:1;mix-blend-mode:plus-lighter}to{opacity:0;mix-blend-mode:plus-lighter}}@keyframes astroSlideFromRight{0%{transform:translate(100%)}}@keyframes astroSlideFromLeft{0%{transform:translate(-100%)}}@keyframes astroSlideToRight{to{transform:translate(100%)}}@keyframes astroSlideToLeft{to{transform:translate(-100%)}}@media (prefers-reduced-motion){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}[data-astro-transition-scope]{animation:none!important}}
 </style><script type="module" src="/_astro/hoisted.fDDyMQpn.js"></script><style>[data-astro-transition-scope="astro-qzijietr-1"] { view-transition-name: post-installing-mysql-enterprise-on-ubuntu-2404; }@layer astro { ::view-transition-old(post-installing-mysql-enterprise-on-ubuntu-2404) { 
@@ -54,45 +54,49 @@
 <h3 id="step-2-running-the-wget-script">Step 2: Running the wget script</h3>
 <p>Once the wget script is downloaded, use the following commands to use it:</p>
 <ol>
-<li>On the server, create a new directory</li>
-</ol>
+<li>
+<p>On the server, create a new directory</p>
 <pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">mkdir </span><span style="color:#9DB1C5">mysql-enterprise</span><span style="color:#BBBBBB"> &#x26;&#x26;</span><span style="color:#B392F0"> cd $_</span></span>
 <span class="line"></span></code></pre>
-<ol start="2">
-<li>Create a new file &#x26; make it executable</li>
-</ol>
+</li>
+<li>
+<p>Create a new file &#x26; make it executable</p>
 <pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">touch </span><span style="color:#9DB1C5">downloader.sh</span><span style="color:#BBBBBB"> &#x26;&#x26;</span><span style="color:#B392F0"> chmod </span><span style="color:#9DB1C5">+x</span><span style="color:#B392F0"> $_</span></span>
 <span class="line"></span></code></pre>
-<ol start="3">
-<li>Paste the wget script content retrieved from the website earlier</li>
-</ol>
+</li>
+<li>
+<p>Paste the wget script content retrieved from the website earlier</p>
 <pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">nano </span><span style="color:#9DB1C5">downloader.sh</span></span>
 <span class="line"></span></code></pre>
-<ol start="4">
-<li>Run the script, you will be prompted with sign in credentials</li>
-</ol>
+</li>
+<li>
+<p>Run the script, you will be prompted with sign in credentials</p>
 <pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">./downloader.sh</span></span>
 <span class="line"></span></code></pre>
 <p>The script will download .zip chunk files, make sure to check the wget log for any error</p>
+</li>
+</ol>
 <h3 id="step-3-installing-the-downloaded-package">Step 3: Installing the downloaded package</h3>
 <ol>
-<li>Unzip all the .zip chunk files</li>
-</ol>
+<li>
+<p>Unzip all the .zip chunk files</p>
 <pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">unzip </span><span style="color:#9DB1C5">-o</span><span style="color:#9DB1C5"> *.zip</span></span>
 <span class="line"></span></code></pre>
-<ol start="2">
-<li>Install the .deb file</li>
-</ol>
+</li>
+<li>
+<p>Install the .deb file</p>
 <pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">dpkg</span><span style="color:#9DB1C5"> -i</span><span style="color:#9DB1C5"> *.deb</span></span>
 <span class="line"></span></code></pre>
 <p>Here, your installation will be interrupted due to an unmet dependencies error</p>
-<ol start="3">
-<li>Fix broken dependencies</li>
-</ol>
+</li>
+<li>
+<p>Fix broken dependencies</p>
 <pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">apt</span><span style="color:#9DB1C5"> install</span><span style="color:#9DB1C5"> -f</span></span>
 <span class="line"></span></code></pre>
 <p>This will scans the system for packages with missing or broken dependencies</p>
-<h3 id="verify">Verify</h3>
+</li>
+</ol>
+<h3 id="conclusion">Conclusion</h3>
+<p>Verify the mysql version, you should see “MySQL Enterprise Server - Commercial” in the output</p>
 <pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">mysql </span><span style="color:#9DB1C5">--version</span></span>
-<span class="line"></span></code></pre>
-<p>You should see “MySQL Enterprise Server - Commercial” in the output</p> </article> </div> </div>  </body></html> 
+<span class="line"></span></code></pre> </article> </div> </div>  </body></html> 
