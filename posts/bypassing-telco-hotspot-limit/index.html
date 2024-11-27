@@ -37,27 +37,73 @@
 	animation-duration: 180ms;
 	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
 	animation-fill-mode: both;
-	animation-name: astroFadeIn; }</style></head><body> <nav class="fixed left-0 right-0 top-0 z-50 flex justify-center px-4"> <div class="w-full max-w-full py-12 md:max-w-2xl lg:max-w-5xl"> <div class="flex items-center justify-between"> <div> <a href="/" class="relative"> <img src="/_astro/hecker.Dslp7-O6_eeR8r.avif" alt="hecker" class="absolute inset-0 h-10 w-10 animate-[spin_30s_linear_infinite] rounded-full blur-lg transition duration-200 md:h-14 md:w-14" width="1280" height="1024" loading="lazy" decoding="async"> <img src="/_astro/hecker.Dslp7-O6_eeR8r.avif" alt="hecker" class="relative h-10 w-10 animate-[spin_30s_linear_infinite] rounded-full md:h-14 md:w-14" width="1280" height="1024" loading="lazy" decoding="async"> </a> </div> <div class="flex items-center"> <a href="/posts" class="border-b-2 text-sm font-semibold border-primary">Today I Learned;</a> </div> </div> </div> </nav>  <div class="flex justify-center px-4"> <div class="w-full max-w-full py-32 md:max-w-2xl"> <h1 class="pb-6 text-2xl font-bold md:text-3xl" data-astro-transition-scope="astro-qzijietr-1">Bypass Telco Hotspot Limit</h1> <div class="flex space-x-2 text-xs tracking-wider text-muted-foreground md:text-sm"> <p> <time datetime="2023-08-12T00:00:00.000Z"> Aug 12, 2023 </time> </p> <span>&middot;</span> <a href="/tags/linux">#linux</a> </div> <div class="relative mt-20">   </div> <article class="prose prose-sm prose-foreground mt-20 max-w-none md:prose-base prose-code:text-xs md:prose-code:text-sm"> <h3 id="setup">Setup</h3>
-<p>First, connect your wifi</p>
-<h4 id="windows">Windows</h4>
-<p>Open your Command Prompt as Administrator, run the following</p>
+	animation-name: astroFadeIn; }</style></head><body> <nav class="fixed left-0 right-0 top-0 z-50 flex justify-center px-4"> <div class="w-full max-w-full py-12 md:max-w-2xl lg:max-w-5xl"> <div class="flex items-center justify-between"> <div> <a href="/" class="relative"> <img src="/_astro/hecker.Dslp7-O6_eeR8r.avif" alt="hecker" class="absolute inset-0 h-10 w-10 animate-[spin_30s_linear_infinite] rounded-full blur-lg transition duration-200 md:h-14 md:w-14" width="1280" height="1024" loading="lazy" decoding="async"> <img src="/_astro/hecker.Dslp7-O6_eeR8r.avif" alt="hecker" class="relative h-10 w-10 animate-[spin_30s_linear_infinite] rounded-full md:h-14 md:w-14" width="1280" height="1024" loading="lazy" decoding="async"> </a> </div> <div class="flex items-center"> <a href="/posts" class="border-b-2 text-sm font-semibold border-primary">Today I Learned;</a> </div> </div> </div> </nav>  <div class="flex justify-center px-4"> <div class="w-full max-w-full py-32 md:max-w-2xl"> <h1 class="pb-6 text-2xl font-bold md:text-3xl" data-astro-transition-scope="astro-qzijietr-1">Bypass Telco Hotspot Limit</h1> <div class="flex space-x-2 text-xs tracking-wider text-muted-foreground md:text-sm"> <p> <time datetime="2023-08-12T00:00:00.000Z"> Aug 12, 2023 </time> </p> <span>&middot;</span> <a href="/tags/linux">#linux</a> </div> <div class="relative mt-20">   </div> <article class="prose prose-sm prose-foreground mt-20 max-w-none md:prose-base prose-code:text-xs md:prose-code:text-sm"> <p><strong>TTL (Time-to-Live)</strong> is a packet value that decreases with each network hop. Telcos monitor TTL to detect and throttle hotspot usage by identifying mismatched values between devices and routers.</p>
+<p>Why adjust TTL? Setting TTL to 65 masks hotspot activity, making packets look like they’re from a single device, bypassing restrictions.</p>
+<h3 id="prerequisites">Prerequisites</h3>
+<ol>
+<li>Administrative privileges</li>
+<li>Connected to your phone mobile hotspot</li>
+</ol>
+<h3 id="step-a-macos">Step A: macOS</h3>
+<ol>
+<li>
+<p>Open Terminal</p>
+</li>
+<li>
+<p>Run the following command</p>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">sysctl</span><span style="color:#9DB1C5"> net.inet.ip.ttl=</span><span style="color:#F8F8F8">65</span></span>
+<span class="line"></span></code></pre>
+</li>
+</ol>
+<h3 id="step-b-linux">Step B: Linux</h3>
+<ol>
+<li>
+<p>Open Terminal</p>
+</li>
+<li>
+<p>Run the following command</p>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">sysctl</span><span style="color:#9DB1C5"> -w</span><span style="color:#9DB1C5"> net.ipv4.ip_default_ttl=</span><span style="color:#F8F8F8">65</span></span>
+<span class="line"></span></code></pre>
+</li>
+</ol>
+<h3 id="step-c-windows">Step C: Windows</h3>
+<ol>
+<li>
+<p>Open Command Prompt as Administrator</p>
+</li>
+<li>
+<p>Run the following command</p>
 <pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">netsh </span><span style="color:#9DB1C5">int</span><span style="color:#9DB1C5"> ipv4</span><span style="color:#9DB1C5"> set</span><span style="color:#9DB1C5"> glob</span><span style="color:#9DB1C5"> defaultcurhoplimit=</span><span style="color:#F8F8F8">65</span></span>
 <span class="line"></span></code></pre>
 <pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">netsh </span><span style="color:#9DB1C5">int</span><span style="color:#9DB1C5"> ipv6</span><span style="color:#9DB1C5"> set</span><span style="color:#9DB1C5"> glob</span><span style="color:#9DB1C5"> defaultcurhoplimit=</span><span style="color:#F8F8F8">65</span></span>
 <span class="line"></span></code></pre>
-<h4 id="macos">MacOS</h4>
-<p>Open your Terminal, run the following</p>
-<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">sysctl </span><span style="color:#9DB1C5">net.inet.ip.ttl=</span><span style="color:#F8F8F8">65</span></span>
-<span class="line"></span></code></pre>
-<blockquote>
-<p>Default TTL and Hop Limit values vary between different operating systems</p>
-<ol>
-<li>Linux kernel 2.4 (circa 2001): 255</li>
-<li>Linux kernel 4.10 (2015): 64</li>
-<li>Windows XP (2001): 128</li>
-<li>Windows 10 (2015): 128</li>
-<li>Windows Server 2008: 128</li>
-<li>Windows Server 2019 (2018): 128</li>
-<li>MacOS (2001): 64</li>
+</li>
 </ol>
-</blockquote> </article> </div> </div>  </body></html> 
+<h3 id="default-ttlhop-limit-values">Default TTL/Hop Limit Values</h3>
+<p>Default values vary across operating systems</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Operating System</th><th>Default TTL</th></tr></thead><tbody><tr><td>Linux Kernel 5.x (2024)</td><td>64</td></tr><tr><td>MacOS (2024, latest version)</td><td>64</td></tr><tr><td>Windows 11 (2024)</td><td>128</td></tr><tr><td>Windows Server 2022 (2024)</td><td>128</td></tr></tbody></table> </article> </div> </div>  </body></html> 
