@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en" class="dark"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.ico"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v4.15.10"><title>Setting Up Dotfiles</title><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/index.D-2lhkpQ.css">
+<!DOCTYPE html><html lang="en" class="dark"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.ico"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v4.15.10"><title>Setting Up Dotfiles</title><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/index.BYf6UDXj.css">
 <style>.footnotes{margin-top:3.5rem}@media (min-width: 768px){.footnotes{margin-top:6rem}}.footnotes ol li p{margin:0}
 @keyframes astroFadeInOut{0%{opacity:1}to{opacity:0}}@keyframes astroFadeIn{0%{opacity:0;mix-blend-mode:plus-lighter}to{opacity:1;mix-blend-mode:plus-lighter}}@keyframes astroFadeOut{0%{opacity:1;mix-blend-mode:plus-lighter}to{opacity:0;mix-blend-mode:plus-lighter}}@keyframes astroSlideFromRight{0%{transform:translate(100%)}}@keyframes astroSlideFromLeft{0%{transform:translate(-100%)}}@keyframes astroSlideToRight{to{transform:translate(100%)}}@keyframes astroSlideToLeft{to{transform:translate(-100%)}}@media (prefers-reduced-motion){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}[data-astro-transition-scope]{animation:none!important}}
 </style><script type="module" src="/_astro/hoisted.fDDyMQpn.js"></script><style>[data-astro-transition-scope="astro-qzijietr-1"] { view-transition-name: post-setting-up-dotfiles; }@layer astro { ::view-transition-old(post-setting-up-dotfiles) { 
@@ -38,43 +38,43 @@
 	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
 	animation-fill-mode: both;
 	animation-name: astroFadeIn; }</style></head><body> <nav class="fixed left-0 right-0 top-0 z-50 flex justify-center px-4"> <div class="w-full max-w-full py-12 md:max-w-2xl lg:max-w-5xl"> <div class="flex items-center justify-between"> <div> <a href="/" class="relative"> <img src="/_astro/hecker.Dslp7-O6_eeR8r.avif" alt="hecker" class="absolute inset-0 h-10 w-10 animate-[spin_30s_linear_infinite] rounded-full blur-lg transition duration-200 md:h-14 md:w-14" width="1280" height="1024" loading="lazy" decoding="async"> <img src="/_astro/hecker.Dslp7-O6_eeR8r.avif" alt="hecker" class="relative h-10 w-10 animate-[spin_30s_linear_infinite] rounded-full md:h-14 md:w-14" width="1280" height="1024" loading="lazy" decoding="async"> </a> </div> <div class="flex items-center"> <a href="/posts" class="border-b-2 text-sm font-semibold border-primary">Today I Learned;</a> </div> </div> </div> </nav>  <div class="flex justify-center px-4"> <div class="w-full max-w-full py-32 md:max-w-2xl"> <h1 class="pb-6 text-2xl font-bold md:text-3xl" data-astro-transition-scope="astro-qzijietr-1">Setting Up Dotfiles</h1> <div class="flex space-x-2 text-xs tracking-wider text-muted-foreground md:text-sm"> <p> <time datetime="2022-01-20T00:00:00.000Z"> Jan 20, 2022 </time> </p> <span>&middot;</span> <a href="/tags/linux">#linux</a> </div> <div class="relative mt-20">   </div> <article class="prose prose-sm prose-foreground mt-20 max-w-none md:prose-base prose-code:text-xs md:prose-code:text-sm"> <p>Easily track and synchronize your machine’s config files (dotfiles) using Git</p>
-<h3 id="prerequisites"><strong>Prerequisites</strong></h3>
+<hr>
+<h3 id="prerequisites">Prerequisites</h3>
 <ol>
 <li>A Linux or macOS terminal</li>
 <li>Git installed</li>
 <li>A GitHub account</li>
 </ol>
-<h3 id="step-1-initializing-the-repository"><strong>Step 1: Initializing the Repository</strong></h3>
+<h3 id="step-1-initialize-a-new-git-repository">Step 1: Initialize a new Git repository</h3>
 <ol>
 <li>
 <p>Initialize a bare Git repository in your home directory</p>
 <pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">cd</span></span>
 <span class="line"><span style="color:#B392F0">git </span><span style="color:#9DB1C5">init</span><span style="color:#9DB1C5"> --bare</span><span style="color:#B392F0"> $HOME</span><span style="color:#9DB1C5">/.dotfiles</span></span>
 <span class="line"></span></code></pre>
-<p>This will creates a hidden Git config directory <code>.dotfiles</code></p>
 </li>
 <li>
-<p>Create an alias for working with dotfiles</p>
+<p>Create an <code>config</code> alias instead of <code>git</code> to work specifically with dotfiles</p>
 <pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#F97583">alias</span><span style="color:#B392F0"> config</span><span style="color:#F97583">=</span><span style="color:#FFAB70">'/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'</span></span>
-<span class="line"><span style="color:#B392F0">config </span><span style="color:#9DB1C5">config</span><span style="color:#9DB1C5"> --local</span><span style="color:#9DB1C5"> status.showUntrackedFiles</span><span style="color:#9DB1C5"> no</span></span>
 <span class="line"></span></code></pre>
-<ul>
-<li><strong><code>alias config</code></strong>: Allows you to use the <code>config</code> alias instead of <code>git</code> to work specifically with dotfiles.</li>
-<li><strong><code>status.showUntrackedFiles no</code></strong>: Hides untracked files to keep your <code>config status</code> output clean.</li>
-</ul>
 </li>
 <li>
-<p>Persist the alias by adding it to your shell configuration file (e.g., <code>.zshrc</code> or <code>.bashrc</code>)</p>
+<p>Hides untracked files to keep your <code>config status</code> output clean.</p>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">config </span><span style="color:#9DB1C5">config</span><span style="color:#9DB1C5"> --local</span><span style="color:#9DB1C5"> status.showUntrackedFiles</span><span style="color:#9DB1C5"> no</span></span>
+<span class="line"></span></code></pre>
+</li>
+<li>
+<p>Add the alias to your shell config file</p>
 <pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">echo </span><span style="color:#FFAB70">"alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'"</span><span style="color:#F97583"> >></span><span style="color:#B392F0"> $HOME</span><span style="color:#9DB1C5">/.zshrc</span></span>
 <span class="line"></span></code></pre>
 </li>
 <li>
-<p>Reload the shell configuration</p>
+<p>Reload your shell</p>
 <pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">source $HOME</span><span style="color:#9DB1C5">/.zshrc</span></span>
 <span class="line"></span></code></pre>
 </li>
 </ol>
-<h3 id="step-2-connecting-to-a-remote-repository"><strong>Step 2: Connecting to a Remote Repository</strong></h3>
+<h3 id="step-2-connect-to-a-remote-repository">Step 2: Connect to a remote repository</h3>
 <ol>
 <li>
 <p>Create a new repository on GitHub</p>
@@ -90,7 +90,7 @@
 <span class="line"></span></code></pre>
 </li>
 </ol>
-<h3 id="step-3-managing-dotfiles"><strong>Step 3: Managing Dotfiles</strong></h3>
+<h3 id="step-3-manage-dotfiles">Step 3: Manage dotfiles</h3>
 <p>With the setup complete, you can now use the <code>config</code> alias to track files in your <code>$HOME</code> directory</p>
 <ol>
 <li>
@@ -101,15 +101,13 @@
 <li>
 <p>Add and commit a file:</p>
 <pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">config </span><span style="color:#9DB1C5">add</span><span style="color:#9DB1C5"> .zshrc</span></span>
-<span class="line"><span style="color:#B392F0">config </span><span style="color:#9DB1C5">commit</span><span style="color:#9DB1C5"> -m</span><span style="color:#FFAB70"> "Add zshrc configuration"</span></span>
+<span class="line"><span style="color:#B392F0">config </span><span style="color:#9DB1C5">commit</span><span style="color:#9DB1C5"> -m</span><span style="color:#FFAB70"> "feat: add new alias"</span></span>
 <span class="line"></span></code></pre>
 </li>
 <li>
 <p>Push changes to the remote repository:</p>
 <pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">config </span><span style="color:#9DB1C5">push</span></span>
 <span class="line"></span></code></pre>
-<p>Repeat these steps for any additional configuration files you want to track</p>
+<p>Repeat these steps for any additional files you want to track</p>
 </li>
-</ol>
-<h3 id="conclusion"><strong>Conclusion</strong></h3>
-<p>Using a bare Git repository for dotfiles is a simple yet powerful way to manage and share your configurations. By following this guide, you ensure that your environment remains consistent and reproducible across devices.</p> </article> </div> </div>  </body></html> 
+</ol> </article> </div> </div>  </body></html> 
