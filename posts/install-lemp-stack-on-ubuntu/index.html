@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en" class="dark"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.ico"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v4.15.10"><title>Setup Laravel App on a LEMP Stack with Ubuntu</title><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/index.CHFkkWYF.css">
+<!DOCTYPE html><html lang="en" class="dark"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.ico"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v4.15.10"><title>Setup Laravel App on a LEMP Stack with Ubuntu</title><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/index.BkGZjlky.css">
 <style>.footnotes{margin-top:3.5rem}@media (min-width: 768px){.footnotes{margin-top:6rem}}.footnotes ol li p{margin:0}
 @keyframes astroFadeInOut{0%{opacity:1}to{opacity:0}}@keyframes astroFadeIn{0%{opacity:0;mix-blend-mode:plus-lighter}to{opacity:1;mix-blend-mode:plus-lighter}}@keyframes astroFadeOut{0%{opacity:1;mix-blend-mode:plus-lighter}to{opacity:0;mix-blend-mode:plus-lighter}}@keyframes astroSlideFromRight{0%{transform:translate(100%)}}@keyframes astroSlideFromLeft{0%{transform:translate(-100%)}}@keyframes astroSlideToRight{to{transform:translate(100%)}}@keyframes astroSlideToLeft{to{transform:translate(-100%)}}@media (prefers-reduced-motion){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}[data-astro-transition-scope]{animation:none!important}}
 </style><script type="module" src="/_astro/hoisted.fDDyMQpn.js"></script><style>[data-astro-transition-scope="astro-qzijietr-1"] { view-transition-name: post-install-lemp-stack-on-ubuntu; }@layer astro { ::view-transition-old(post-install-lemp-stack-on-ubuntu) { 
@@ -200,6 +200,167 @@
 <span class="line"><span style="color:#F97583">        listen </span><span style="color:#B392F0">[::]:80 </span><span style="color:#79B8FF">default_server</span><span style="color:#B392F0">; </span><span style="color:#6B737C"># Comment this line</span></span>
 <span class="line"><span style="color:#B392F0">...</span></span>
 <span class="line"></span></code></pre>
+<p>To set up and run jobs and the scheduler for your Laravel application on your Ubuntu server, follow these steps:</p>
+<hr>
+<h3 id="1-configure-laravel-scheduler"><strong>1. Configure Laravel Scheduler</strong></h3>
+<p>Laravel’s scheduler requires a single cron job to run every minute. Here’s how to set it up:</p>
+<ol>
+<li>
+<p>Open the crontab for the <code>www-data</code> user:</p>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">crontab</span><span style="color:#9DB1C5"> -u</span><span style="color:#9DB1C5"> www-data</span><span style="color:#9DB1C5"> -e</span></span>
+<span class="line"></span></code></pre>
+</li>
+<li>
+<p>Add the following line to run the Laravel scheduler every minute:</p>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#F97583">*</span><span style="color:#F97583"> *</span><span style="color:#F97583"> *</span><span style="color:#F97583"> *</span><span style="color:#F97583"> *</span><span style="color:#B392F0"> php /path/to/laravel/artisan schedule:run </span><span style="color:#F97583">>></span><span style="color:#B392F0"> /dev/null </span><span style="color:#F97583">2>&#x26;1</span></span>
+<span class="line"></span></code></pre>
+<p>Replace <code>/path/to/laravel</code> with the full path to your Laravel project.</p>
+</li>
+<li>
+<p>Save and exit the editor.</p>
+</li>
+</ol>
+<hr>
+<h3 id="2-run-laravel-queues"><strong>2. Run Laravel Queues</strong></h3>
+<p>Laravel uses a queue worker to process jobs. Start the queue worker using <code>artisan</code>:</p>
+<ol>
+<li>
+<p>Test the queue manually:</p>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">php </span><span style="color:#9DB1C5">/path/to/laravel/artisan</span><span style="color:#9DB1C5"> queue:work</span></span>
+<span class="line"></span></code></pre>
+</li>
+<li>
+<p>To keep the queue running continuously, you should use a process manager like <strong>Supervisor</strong>.</p>
+</li>
+</ol>
+<hr>
+<h3 id="3-configure-supervisor-for-laravel-queues"><strong>3. Configure Supervisor for Laravel Queues</strong></h3>
+<ol>
+<li>
+<p>Install Supervisor:</p>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">apt</span><span style="color:#9DB1C5"> update</span></span>
+<span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">apt</span><span style="color:#9DB1C5"> install</span><span style="color:#9DB1C5"> supervisor</span></span>
+<span class="line"></span></code></pre>
+</li>
+<li>
+<p>Create a Supervisor configuration file for your Laravel queue worker:</p>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">nano</span><span style="color:#9DB1C5"> /etc/supervisor/conf.d/laravel-worker.conf</span></span>
+<span class="line"></span></code></pre>
+</li>
+<li>
+<p>Add the following configuration (replace paths with your project details):</p>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="ini"><code><span class="line"><span style="color:#B392F0">[program:laravel-worker]</span></span>
+<span class="line"><span style="color:#F97583">process_name=</span><span style="color:#B392F0">%(program_name)s_%(process_num)02d</span></span>
+<span class="line"><span style="color:#F97583">command=</span><span style="color:#B392F0">php /var/www/edewan/artisan queue:work --</span><span style="color:#F97583">sleep=</span><span style="color:#B392F0">3 --</span><span style="color:#F97583">tries=</span><span style="color:#B392F0">3 --</span><span style="color:#F97583">timeout=</span><span style="color:#B392F0">90</span></span>
+<span class="line"><span style="color:#F97583">autostart=</span><span style="color:#B392F0">true</span></span>
+<span class="line"><span style="color:#F97583">autorestart=</span><span style="color:#B392F0">true</span></span>
+<span class="line"><span style="color:#F97583">user=</span><span style="color:#B392F0">www-data</span></span>
+<span class="line"><span style="color:#F97583">numprocs=</span><span style="color:#B392F0">1</span></span>
+<span class="line"><span style="color:#F97583">redirect_stderr=</span><span style="color:#B392F0">true</span></span>
+<span class="line"><span style="color:#F97583">stdout_logfile=</span><span style="color:#B392F0">/path/to/laravel/storage/logs/worker.log</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">[program:laravel-worker]</span></span>
+<span class="line"><span style="color:#F97583">process_name=</span><span style="color:#B392F0">%(program_name)s_%(process_num)02d</span></span>
+<span class="line"><span style="color:#F97583">command=</span><span style="color:#B392F0">php /home/forge/app.com/artisan queue:work sqs --</span><span style="color:#F97583">sleep=</span><span style="color:#B392F0">3 --</span><span style="color:#F97583">tries=</span><span style="color:#B392F0">3 --</span><span style="color:#F97583">max-time=</span><span style="color:#B392F0">3600</span></span>
+<span class="line"><span style="color:#F97583">autostart=</span><span style="color:#B392F0">true</span></span>
+<span class="line"><span style="color:#F97583">autorestart=</span><span style="color:#B392F0">true</span></span>
+<span class="line"><span style="color:#F97583">stopasgroup=</span><span style="color:#B392F0">true</span></span>
+<span class="line"><span style="color:#F97583">killasgroup=</span><span style="color:#B392F0">true</span></span>
+<span class="line"><span style="color:#F97583">user=</span><span style="color:#B392F0">forge</span></span>
+<span class="line"><span style="color:#F97583">numprocs=</span><span style="color:#B392F0">8</span></span>
+<span class="line"><span style="color:#F97583">redirect_stderr=</span><span style="color:#B392F0">true</span></span>
+<span class="line"><span style="color:#F97583">stdout_logfile=</span><span style="color:#B392F0">/var/www/edewan/storage/logs/supervisor.log</span></span>
+<span class="line"><span style="color:#F97583">stopwaitsecs=</span><span style="color:#B392F0">3600</span></span>
+<span class="line"></span></code></pre>
+</li>
+<li>
+<p>Save and exit the editor.</p>
+</li>
+<li>
+<p>Update Supervisor to apply the configuration:</p>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">supervisorctl</span><span style="color:#9DB1C5"> reread</span></span>
+<span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">supervisorctl</span><span style="color:#9DB1C5"> update</span></span>
+<span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">supervisorctl</span><span style="color:#9DB1C5"> start</span><span style="color:#9DB1C5"> laravel-worker:*</span></span>
+<span class="line"></span></code></pre>
+</li>
+</ol>
+<hr>
+<h3 id="4-verify-everything-is-running"><strong>4. Verify Everything is Running</strong></h3>
+<ul>
+<li>
+<p>Check the logs to confirm the scheduler and queue are working:</p>
+<ul>
+<li>Laravel logs: <code>/path/to/laravel/storage/logs/laravel.log</code></li>
+<li>Worker logs: <code>/path/to/laravel/storage/logs/worker.log</code></li>
+</ul>
+</li>
+<li>
+<p>Use <code>supervisorctl</code> to manage the queue worker:</p>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">supervisorctl</span><span style="color:#9DB1C5"> status</span></span>
+<span class="line"></span></code></pre>
+</li>
+</ul>
+<hr>
+<p>With this setup, the scheduler will run automatically every minute, and the queue worker will continuously process jobs in the background. Let me know if you need any troubleshooting!</p>
+<hr>
+<h3 id="minimal-steps-if-no-permission-issues-exist-already">Minimal Steps (If No Permission Issues Exist Already)</h3>
+<p>If the writable directories already have the correct ownership (<code>www-data</code>) and you’re fine with being the owner of the rest, you can skip redundant steps:</p>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">chmod</span><span style="color:#9DB1C5"> -R</span><span style="color:#F8F8F8"> 775</span><span style="color:#9DB1C5"> /path/to/laravel/storage</span><span style="color:#9DB1C5"> /path/to/laravel/bootstrap/cache</span></span>
+<span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">chown</span><span style="color:#9DB1C5"> -R</span><span style="color:#B392F0"> $USER</span><span style="color:#9DB1C5">:www-data</span><span style="color:#9DB1C5"> /path/to/laravel</span></span>
+<span class="line"></span></code></pre>
+<p>This will likely suffice. Let me know if you want to further refine the commands!</p>
+<p>MYSQL</p>
+<p>Your commands are mostly correct, but to improve security and match your two-server setup, you should limit the privileges to only the IP of your application server (<code>192.223.1.10</code>). Here’s the adjusted command:</p>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#F97583">CREATE</span><span style="color:#F97583"> USER</span><span style="color:#B392F0"> 'images_user'@</span><span style="color:#FFAB70">'192.223.1.10'</span><span style="color:#B392F0"> IDENTIFIED </span><span style="color:#F97583">BY</span><span style="color:#FFAB70"> 'images_password'</span><span style="color:#B392F0">; </span></span>
+<span class="line"><span style="color:#F97583">GRANT</span><span style="color:#B392F0"> ALL PRIVILEGES </span><span style="color:#F97583">ON</span><span style="color:#B392F0"> images.</span><span style="color:#F97583">*</span><span style="color:#F97583"> TO</span><span style="color:#FFAB70"> 'images_user'</span><span style="color:#B392F0">@</span><span style="color:#FFAB70">'192.223.1.10'</span><span style="color:#B392F0">; </span></span>
+<span class="line"><span style="color:#B392F0">FLUSH PRIVILEGES;</span></span>
+<span class="line"></span></code></pre>
+<p>This ensures that the <code>images_user</code> can only connect from the application server. Additionally:</p>
+<ol>
+<li>
+<p>Make sure your database server (<code>192.223.1.11</code>) is configured to allow remote connections.</p>
+<ul>
+<li>Update the MySQL configuration file (<code>/etc/mysql/my.cnf</code> or <code>/etc/mysql/mysql.conf.d/mysqld.cnf</code>) and set <code>bind-address = 192.223.1.11</code>.</li>
+</ul>
+</li>
+<li>
+<p>Restart MySQL to apply the configuration:</p>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">systemctl</span><span style="color:#9DB1C5"> restart</span><span style="color:#9DB1C5"> mysql</span></span>
+<span class="line"></span></code></pre>
+</li>
+<li>
+<p>Open the appropriate port (default is <code>3306</code>) in the firewall of the database server to allow connections from the app server.</p>
+</li>
+</ol>
+<hr>
+<p>You can create a database from the app server if:</p>
+<ol>
+<li><strong>You have remote access</strong> to the database server (<code>192.223.1.11</code>).</li>
+<li>The MySQL user you are using (e.g., <code>images_user</code> or <code>root</code>) has sufficient privileges to create databases.</li>
+</ol>
+<p>If these conditions are met, follow these steps:</p>
+<h3 id="1-connect-to-the-database-server-from-the-app-server">1. Connect to the Database Server from the App Server</h3>
+<p>On the app server (<code>192.223.1.10</code>), use the following command to log in to MySQL on the DB server:</p>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">mysql </span><span style="color:#9DB1C5">-u</span><span style="color:#9DB1C5"> root</span><span style="color:#9DB1C5"> -p</span><span style="color:#9DB1C5"> -h</span><span style="color:#F8F8F8"> 192.223.1.11</span></span>
+<span class="line"></span></code></pre>
+<p>Replace <code>root</code> with the appropriate MySQL user and provide the password when prompted.</p>
+<h3 id="2-create-the-database">2. Create the Database</h3>
+<p>Once logged in, create the database:</p>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#F97583">CREATE</span><span style="color:#F97583"> DATABASE</span><span style="color:#B392F0"> images;</span></span>
+<span class="line"></span></code></pre>
+<h3 id="3-verify">3. Verify</h3>
+<p>Check if the database was created:</p>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#B392F0">SHOW DATABASES;</span></span>
+<span class="line"></span></code></pre>
+<h3 id="note">Note:</h3>
+<ul>
+<li>Ensure that the database server (<code>192.223.1.11</code>) allows connections from the app server IP (<code>192.223.1.10</code>) by properly configuring <code>bind-address</code> in MySQL and opening the necessary firewall ports.</li>
+<li>If the <code>images_user</code> does not have permissions to create a database, use a privileged account like <code>root</code>.</li>
+</ul>
+<p>Let me know if you encounter any issues!</p>
+<p>curl -o- <a href="https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh">https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh</a> | bash
+nvm install 22
+nvm install-latest-npm</p>
 <section data-footnotes="" class="footnotes"><h2 class="sr-only" id="footnote-label">Footnotes</h2>
 <ol>
 <li id="user-content-fn-1">
