@@ -1,0 +1,99 @@
+<!DOCTYPE html><html lang="en" class="dark"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.ico"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v4.15.10"><title>Install MariaDB Galera Cluster on Ubuntu</title><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/index.BoXkdlhy.css">
+<style>.footnotes{margin-top:3.5rem}@media (min-width: 768px){.footnotes{margin-top:6rem}}.footnotes ol li p{margin:0}
+@keyframes astroFadeInOut{0%{opacity:1}to{opacity:0}}@keyframes astroFadeIn{0%{opacity:0;mix-blend-mode:plus-lighter}to{opacity:1;mix-blend-mode:plus-lighter}}@keyframes astroFadeOut{0%{opacity:1;mix-blend-mode:plus-lighter}to{opacity:0;mix-blend-mode:plus-lighter}}@keyframes astroSlideFromRight{0%{transform:translate(100%)}}@keyframes astroSlideFromLeft{0%{transform:translate(-100%)}}@keyframes astroSlideToRight{to{transform:translate(100%)}}@keyframes astroSlideToLeft{to{transform:translate(-100%)}}@media (prefers-reduced-motion){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}[data-astro-transition-scope]{animation:none!important}}
+</style><script type="module" src="/_astro/hoisted.fDDyMQpn.js"></script><style>[data-astro-transition-scope="astro-qzijietr-1"] { view-transition-name: post-mariadb-galera-cluster-on-ubuntu; }@layer astro { ::view-transition-old(post-mariadb-galera-cluster-on-ubuntu) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(post-mariadb-galera-cluster-on-ubuntu) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(post-mariadb-galera-cluster-on-ubuntu) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(post-mariadb-galera-cluster-on-ubuntu) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-qzijietr-1"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-qzijietr-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-qzijietr-1"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-qzijietr-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-qzijietr-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-qzijietr-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-qzijietr-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-qzijietr-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style></head><body> <nav class="fixed left-0 right-0 top-0 z-50 flex justify-center px-4"> <div class="w-full max-w-full py-12 md:max-w-2xl lg:max-w-5xl"> <div class="flex items-center justify-between"> <div> <a href="/" class="relative"> <img src="/_astro/hecker.Dslp7-O6_eeR8r.avif" alt="hecker" class="absolute inset-0 h-10 w-10 animate-[spin_30s_linear_infinite] rounded-full blur-lg transition duration-200 md:h-14 md:w-14" width="1280" height="1024" loading="lazy" decoding="async"> <img src="/_astro/hecker.Dslp7-O6_eeR8r.avif" alt="hecker" class="relative h-10 w-10 animate-[spin_30s_linear_infinite] rounded-full md:h-14 md:w-14" width="1280" height="1024" loading="lazy" decoding="async"> </a> </div> <div class="flex items-center"> <a href="/posts" class="border-b-2 text-sm font-semibold border-primary">Today I Learned;</a> </div> </div> </div> </nav>  <div class="flex justify-center px-4"> <div class="w-full max-w-full py-32 md:max-w-3xl"> <h1 class="pb-6 text-2xl font-bold md:text-3xl" data-astro-transition-scope="astro-qzijietr-1">Install MariaDB Galera Cluster on Ubuntu</h1> <div class="flex space-x-2 text-xs tracking-wider text-muted-foreground md:text-sm"> <p> <time datetime="2025-05-14T00:00:00.000Z"> May 14, 2025 </time> </p> <span>&middot;</span> <a href="/tags/ubuntu">#ubuntu</a> </div> <div class="relative mt-20">   </div> <article class="prose prose-sm prose-foreground mt-20 max-w-none md:prose-base prose-code:text-xs md:prose-code:text-sm"> <p>This guide outlines the steps to install and configure a 3-node multi-primary MariaDB Galera Cluster on Ubuntu 24.04.</p>
+<hr>
+<h3 id="step-1-install--configure-mariadb-galera">Step 1: Install &#x26; Configure MariaDB Galera</h3>
+<p>Install packages:</p>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">apt</span><span style="color:#9DB1C5"> update</span></span>
+<span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">apt</span><span style="color:#9DB1C5"> install</span><span style="color:#9DB1C5"> mariadb-server</span><span style="color:#9DB1C5"> galera-4</span><span style="color:#9DB1C5"> rsync</span><span style="color:#9DB1C5"> -y</span></span>
+<span class="line"></span></code></pre>
+<p>Update firewall:</p>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">ufw</span><span style="color:#9DB1C5"> allow</span><span style="color:#9DB1C5"> ssh,3306,4567,4568,4444/tcp</span></span>
+<span class="line"></span></code></pre>
+<p>Edit config on each node (<code>/etc/mysql/mariadb.conf.d/60-galera.cnf</code>):</p>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="ini"><code><span class="line"><span style="color:#B392F0">[galera]</span></span>
+<span class="line"><span style="color:#F97583">wsrep_on=</span><span style="color:#B392F0">ON</span></span>
+<span class="line"><span style="color:#F97583">wsrep_provider=</span><span style="color:#B392F0">/usr/lib/galera/libgalera_smm.so</span></span>
+<span class="line"><span style="color:#F97583">wsrep_cluster_address=</span><span style="color:#FFAB70">"gcomm://172.31.33.60,172.31.35.42,172.31.39.145"</span></span>
+<span class="line"><span style="color:#F97583">binlog_format=</span><span style="color:#B392F0">row</span></span>
+<span class="line"><span style="color:#F97583">default_storage_engine=</span><span style="color:#B392F0">InnoDB</span></span>
+<span class="line"><span style="color:#F97583">innodb_autoinc_lock_mode=</span><span style="color:#B392F0">2</span></span>
+<span class="line"><span style="color:#F97583">bind-address=</span><span style="color:#B392F0">0.0.0.0</span></span>
+<span class="line"><span style="color:#F97583">wsrep_cluster_name=</span><span style="color:#FFAB70">"MariaDB_Cluster"</span></span>
+<span class="line"><span style="color:#F97583">wsrep_node_address=</span><span style="color:#FFAB70">"172.31.33.60"</span><span style="color:#6B737C">  # change per node</span></span>
+<span class="line"><span style="color:#F97583">wsrep_node_name=</span><span style="color:#FFAB70">"node-1"</span><span style="color:#6B737C">           # change per node</span></span>
+<span class="line"><span style="color:#F97583">wsrep_sst_method=</span><span style="color:#FFAB70">"rsync"</span></span>
+<span class="line"><span style="color:#F97583">wsrep_sst_auth=</span><span style="color:#FFAB70">"sstuser:sstpassword"</span></span>
+<span class="line"></span></code></pre>
+<p>Start MariaDB:</p>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">systemctl</span><span style="color:#9DB1C5"> start</span><span style="color:#9DB1C5"> mariadb</span></span>
+<span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">systemctl</span><span style="color:#9DB1C5"> enable</span><span style="color:#9DB1C5"> mariadb</span></span>
+<span class="line"></span></code></pre>
+<p>On first node only:</p>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">galera_new_cluster</span></span>
+<span class="line"></span></code></pre>
+<p>Then start on other nodes:</p>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">systemctl</span><span style="color:#9DB1C5"> start</span><span style="color:#9DB1C5"> mariadb</span></span>
+<span class="line"></span></code></pre>
+<hr>
+<h3 id="step-2-test-replication">Step 2: Test Replication</h3>
+<p>Create a test table:</p>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#F97583">CREATE</span><span style="color:#F97583"> TABLE</span><span style="color:#B392F0"> cats (</span></span>
+<span class="line"><span style="color:#B392F0">    id </span><span style="color:#F97583">INT</span><span style="color:#B392F0"> AUTO_INCREMENT </span><span style="color:#F97583">PRIMARY KEY</span><span style="color:#B392F0">,</span></span>
+<span class="line"><span style="color:#F97583">    name</span><span style="color:#F97583"> VARCHAR</span><span style="color:#B392F0">(</span><span style="color:#F8F8F8">50</span><span style="color:#B392F0">),</span></span>
+<span class="line"><span style="color:#B392F0">    created_at </span><span style="color:#F97583">TIMESTAMP</span><span style="color:#F97583"> DEFAULT</span><span style="color:#B392F0"> CURRENT_TIMESTAMP</span></span>
+<span class="line"><span style="color:#B392F0">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">INSERT INTO</span><span style="color:#B392F0"> cats (</span><span style="color:#F97583">name</span><span style="color:#B392F0">) </span><span style="color:#F97583">VALUES</span><span style="color:#B392F0"> </span></span>
+<span class="line"><span style="color:#B392F0">(</span><span style="color:#FFAB70">'Node1 Cat Test'</span><span style="color:#B392F0">), </span></span>
+<span class="line"><span style="color:#B392F0">(</span><span style="color:#FFAB70">'Node2 Cat Test'</span><span style="color:#B392F0">), </span></span>
+<span class="line"><span style="color:#B392F0">(</span><span style="color:#FFAB70">'Node3 Cat Test'</span><span style="color:#B392F0">);</span></span>
+<span class="line"></span></code></pre>
+<p>Check replication across nodes:</p>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#F97583">SELECT</span><span style="color:#F97583"> *</span><span style="color:#F97583"> FROM</span><span style="color:#B392F0"> cats;</span></span>
+<span class="line"></span></code></pre>
+<hr>
+<h3 id="conclusion">Conclusion</h3>
+<p>MariaDB Galera Cluster is now configured and running across:</p>
+<ul>
+<li><code>172.31.33.60</code></li>
+<li><code>172.31.35.42</code></li>
+<li><code>172.31.39.145</code></li>
+</ul> </article> </div> </div>  </body></html> 
