@@ -37,10 +37,10 @@
 	animation-duration: 180ms;
 	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
 	animation-fill-mode: both;
-	animation-name: astroFadeIn; }</style></head><body> <nav class="fixed left-0 right-0 top-0 z-50 flex justify-center px-4"> <div class="w-full max-w-full py-12 md:max-w-2xl lg:max-w-5xl"> <div class="flex items-center justify-between"> <div> <a href="/" class="relative"> <img src="/_astro/hecker.Dslp7-O6_eeR8r.avif" alt="hecker" class="absolute inset-0 h-10 w-10 animate-[spin_30s_linear_infinite] rounded-full blur-lg transition duration-200 md:h-14 md:w-14" width="1280" height="1024" loading="lazy" decoding="async"> <img src="/_astro/hecker.Dslp7-O6_eeR8r.avif" alt="hecker" class="relative h-10 w-10 animate-[spin_30s_linear_infinite] rounded-full md:h-14 md:w-14" width="1280" height="1024" loading="lazy" decoding="async"> </a> </div> <div class="flex items-center"> <a href="/posts" class="border-b-2 text-sm font-semibold border-primary">Today I Learned;</a> </div> </div> </div> </nav>  <div class="flex justify-center px-4"> <div class="w-full max-w-full py-32 md:max-w-3xl"> <h1 class="pb-6 text-2xl font-bold md:text-3xl" data-astro-transition-scope="astro-qzijietr-1">Setup MariaDB Galera Cluster with MariaDB MaxScale on Ubuntu</h1> <div class="flex space-x-2 text-xs tracking-wider text-muted-foreground md:text-sm"> <p> <time datetime="2024-01-01T00:00:00.000Z"> Jan 1, 2024 </time> </p> <span>&middot;</span> <a href="/tags/devops">#devops</a> </div> <div class="relative mt-20">   </div> <article class="prose prose-sm prose-foreground mt-20 max-w-none md:prose-base prose-code:text-xs md:prose-code:text-sm"> <p>MariaDB Galera Cluster is a synchronous multi-master database cluster solution that provides MariaDB high availability and data consistency. MariaDB MaxScale is a database proxy that can be used to improve the performance, scalability, and security of MariaDB Galera Cluster.</p>
+	animation-name: astroFadeIn; }</style></head><body> <nav class="fixed left-0 right-0 top-0 z-50 flex justify-center px-4"> <div class="w-full max-w-full py-12 md:max-w-2xl lg:max-w-5xl"> <div class="flex items-center justify-between"> <div> <a href="/" class="relative"> <img src="/_astro/hecker.Dslp7-O6_eeR8r.avif" alt="hecker" class="absolute inset-0 h-10 w-10 animate-[spin_30s_linear_infinite] rounded-full blur-lg transition duration-200 md:h-14 md:w-14" width="1280" height="1024" loading="lazy" decoding="async"> <img src="/_astro/hecker.Dslp7-O6_eeR8r.avif" alt="hecker" class="relative h-10 w-10 animate-[spin_30s_linear_infinite] rounded-full md:h-14 md:w-14" width="1280" height="1024" loading="lazy" decoding="async"> </a> </div> <div class="flex items-center"> <a href="/posts" class="border-b-2 text-sm font-semibold border-primary">Today I Learned;</a> </div> </div> </div> </nav>  <div class="flex justify-center px-4"> <div class="w-full max-w-full py-32 md:max-w-3xl"> <h1 class="pb-6 text-2xl font-bold md:text-3xl" data-astro-transition-scope="astro-qzijietr-1">Setup MariaDB Galera Cluster with MariaDB MaxScale on Ubuntu</h1> <div class="flex space-x-2 text-xs tracking-wider text-muted-foreground md:text-sm"> <p> <time datetime="2025-05-21T00:00:00.000Z"> May 21, 2025 </time> </p> <span>&middot;</span> <a href="/tags/devops">#devops</a> </div> <div class="relative mt-20">   </div> <article class="prose prose-sm prose-foreground mt-20 max-w-none md:prose-base prose-code:text-xs md:prose-code:text-sm"> <p>MariaDB Galera Cluster is a synchronous multi-master database cluster solution that provides MariaDB high availability and data consistency. MariaDB MaxScale is a database proxy that can be used to improve the performance, scalability, and security of MariaDB Galera Cluster.</p>
 <p>Using MariaDB MaxScale with MariaDB Galera Cluster offers several key benefits, including improved read throughput, deadlock avoidance on commit, and high availability guarantees. This means that your database will be more resilient to failures and will be able to handle more traffic.</p>
 <hr>
-<h3 id="prerequisites">Prerequisites</h3>
+<h2 id="prerequisites">Prerequisites</h2>
 
 
 
@@ -66,15 +66,156 @@
 
 
 
-<table><thead><tr><th>Type</th><th>IP Address</th></tr></thead><tbody><tr><td>MariaDB node 1</td><td>172.31.33.60</td></tr><tr><td>MariaDB node 2</td><td>172.31.35.42</td></tr><tr><td>MariaDB node 3</td><td>172.31.39.145</td></tr><tr><td>MaxScale proxy</td><td>172.31.44.231</td></tr></tbody></table>
-<h3 id="step-1-lorem-ipsum-dolor-sit-amet">Step 1: Lorem ipsum dolor sit amet</h3>
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, ipsum.</p>
-<ol>
-<li>Lorem ipsum dolor</li>
-</ol>
-<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">lorem </span><span style="color:#9DB1C5">ipsum</span></span>
+
+
+
+
+
+<table><thead><tr><th>Description</th><th>IP Address</th><th>Allowed ports</th></tr></thead><tbody><tr><td>MaxScale proxy</td><td>172.31.33.100</td><td>3307, 8989</td></tr><tr><td>MariaDB node 1</td><td>172.31.33.101</td><td>3306, 4567, 4568, 4444</td></tr><tr><td>MariaDB node 2</td><td>172.31.33.102</td><td>3306, 4567, 4568, 4444</td></tr><tr><td>MariaDB node 3</td><td>172.31.33.103</td><td>3306, 4567, 4568, 4444</td></tr></tbody></table>
+<h2 id="setup-mariadb-galera-cluster-nodes">Setup MariaDB Galera Cluster Nodes</h2>
+<h3 id="1-install-mariadb">1. Install MariaDB</h3>
+<p>We will work on the first node</p>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">apt</span><span style="color:#9DB1C5"> update</span></span>
 <span class="line"></span></code></pre>
-<h3 id="conclusion">Conclusion</h3>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">apt</span><span style="color:#9DB1C5"> install</span><span style="color:#9DB1C5"> mariadb-client</span><span style="color:#9DB1C5"> mariadb-server</span><span style="color:#9DB1C5"> rsync</span></span>
+<span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">mysql_secure_installation</span></span>
+<span class="line"></span></code></pre>
+<h3 id="2-configure-galera">2. Configure Galera</h3>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="ini"><code><span class="line"></span></code></pre>
+<h3 id="3-enable-replication">3. Enable Replication</h3>
+<h3 id="4-configure-firewall">4. Configure Firewall</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Port</th><th>Purpose</th></tr></thead><tbody><tr><td>3306</td><td>MySQL client connections</td></tr><tr><td>4567</td><td>Galera replication</td></tr><tr><td>4568</td><td>Incremental state transfer (IST)</td></tr><tr><td>4444</td><td>State snapshot transfer (SST)</td></tr></tbody></table>
+<h3 id="5-verify">5. Verify</h3>
+<h2 id="setup-mariadb-maxscale">Setup MariaDB MaxScale</h2>
+<h3 id="1-install-maxscale">1. Install MaxScale</h3>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">curl </span><span style="color:#9DB1C5">-LsS</span><span style="color:#9DB1C5"> https://r.mariadb.com/downloads/mariadb_repo_setup</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> sudo </span><span style="color:#9DB1C5">bash</span></span>
+<span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">apt</span><span style="color:#9DB1C5"> install</span><span style="color:#9DB1C5"> maxscale</span></span>
+<span class="line"></span></code></pre>
+<h3 id="2-configure-maxscale">2. Configure MaxScale</h3>
+<p>Edit the MaxScale config file which is located at <code>/etc/maxscale.cnf</code>. You need to configure the <code>servers</code>, <code>monitor</code>, <code>services</code> and <code>listeners</code>.</p>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="ini"><code><span class="line"><span style="color:#B392F0">[maxscale]</span></span>
+<span class="line"><span style="color:#F97583">threads=</span><span style="color:#B392F0">auto</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">[node1]</span></span>
+<span class="line"><span style="color:#F97583">type=</span><span style="color:#B392F0">server</span></span>
+<span class="line"><span style="color:#F97583">address=</span><span style="color:#B392F0">172.31.33.101</span></span>
+<span class="line"><span style="color:#F97583">port=</span><span style="color:#B392F0">3306</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">[node2]</span></span>
+<span class="line"><span style="color:#F97583">type=</span><span style="color:#B392F0">server</span></span>
+<span class="line"><span style="color:#F97583">address=</span><span style="color:#B392F0">172.31.33.102</span></span>
+<span class="line"><span style="color:#F97583">port=</span><span style="color:#B392F0">3306</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">[node3]</span></span>
+<span class="line"><span style="color:#F97583">type=</span><span style="color:#B392F0">server</span></span>
+<span class="line"><span style="color:#F97583">address=</span><span style="color:#B392F0">172.31.33.103</span></span>
+<span class="line"><span style="color:#F97583">port=</span><span style="color:#B392F0">3306</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">[Galera-Monitor]</span></span>
+<span class="line"><span style="color:#F97583">type=</span><span style="color:#B392F0">monitor</span></span>
+<span class="line"><span style="color:#F97583">module=</span><span style="color:#B392F0">galeramon</span></span>
+<span class="line"><span style="color:#F97583">servers=</span><span style="color:#B392F0">node1,node2,node3</span></span>
+<span class="line"><span style="color:#F97583">user=</span><span style="color:#B392F0">monitor_user</span></span>
+<span class="line"><span style="color:#F97583">password=</span><span style="color:#B392F0">monitor_password</span></span>
+<span class="line"><span style="color:#F97583">monitor_interval=</span><span style="color:#B392F0">2000ms</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">[Splitter-Service]</span></span>
+<span class="line"><span style="color:#F97583">type=</span><span style="color:#B392F0">service</span></span>
+<span class="line"><span style="color:#F97583">router=</span><span style="color:#B392F0">readwritesplit</span></span>
+<span class="line"><span style="color:#F97583">servers=</span><span style="color:#B392F0">node1,node2,node3</span></span>
+<span class="line"><span style="color:#F97583">user=</span><span style="color:#B392F0">maxscale_user</span></span>
+<span class="line"><span style="color:#F97583">password=</span><span style="color:#B392F0">maxscale_password</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">[Splitter-Listener]</span></span>
+<span class="line"><span style="color:#F97583">type=</span><span style="color:#B392F0">listener</span></span>
+<span class="line"><span style="color:#F97583">service=</span><span style="color:#B392F0">Splitter-Service</span></span>
+<span class="line"><span style="color:#F97583">port=</span><span style="color:#B392F0">3306</span></span>
+<span class="line"></span></code></pre>
+<p>You can check the config with:</p>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">maxscale </span><span style="color:#9DB1C5">--config-check</span></span>
+<span class="line"></span></code></pre>
+<p>Create a user account for the Monitor</p>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#F97583">CREATE</span><span style="color:#F97583"> USER</span><span style="color:#B392F0"> 'monitor_user'@</span><span style="color:#FFAB70">'%'</span><span style="color:#B392F0"> IDENTIFIED </span><span style="color:#F97583">BY</span><span style="color:#FFAB70"> 'monitor_password'</span><span style="color:#B392F0">;</span></span>
+<span class="line"></span></code></pre>
+<p>Create a user account for MaxScale</p>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#F97583">CREATE</span><span style="color:#F97583"> USER</span><span style="color:#B392F0"> 'maxscale_user'@</span><span style="color:#FFAB70">'%'</span><span style="color:#B392F0"> IDENTIFIED </span><span style="color:#F97583">BY</span><span style="color:#FFAB70"> 'maxscale_password'</span><span style="color:#B392F0">;</span></span>
+<span class="line"><span style="color:#F97583">GRANT</span><span style="color:#F97583"> SELECT</span><span style="color:#F97583"> ON</span><span style="color:#B392F0"> mysql.user </span><span style="color:#F97583">TO</span><span style="color:#FFAB70"> 'maxscale_user'</span><span style="color:#B392F0">@</span><span style="color:#FFAB70">'%'</span><span style="color:#B392F0">;</span></span>
+<span class="line"><span style="color:#F97583">GRANT</span><span style="color:#F97583"> SELECT</span><span style="color:#F97583"> ON</span><span style="color:#B392F0"> mysql.db </span><span style="color:#F97583">TO</span><span style="color:#FFAB70"> 'maxscale_user'</span><span style="color:#B392F0">@</span><span style="color:#FFAB70">'%'</span><span style="color:#B392F0">;</span></span>
+<span class="line"><span style="color:#F97583">GRANT</span><span style="color:#F97583"> SELECT</span><span style="color:#F97583"> ON</span><span style="color:#B392F0"> mysql.tables_priv </span><span style="color:#F97583">TO</span><span style="color:#FFAB70"> 'maxscale_user'</span><span style="color:#B392F0">@</span><span style="color:#FFAB70">'%'</span><span style="color:#B392F0">;</span></span>
+<span class="line"><span style="color:#F97583">GRANT</span><span style="color:#F97583"> SELECT</span><span style="color:#F97583"> ON</span><span style="color:#B392F0"> mysql.columns_priv </span><span style="color:#F97583">TO</span><span style="color:#FFAB70"> 'maxscale_user'</span><span style="color:#B392F0">@</span><span style="color:#FFAB70">'%'</span><span style="color:#B392F0">;</span></span>
+<span class="line"><span style="color:#F97583">GRANT</span><span style="color:#F97583"> SELECT</span><span style="color:#F97583"> ON</span><span style="color:#B392F0"> mysql.procs_priv </span><span style="color:#F97583">TO</span><span style="color:#FFAB70"> 'maxscale_user'</span><span style="color:#B392F0">@</span><span style="color:#FFAB70">'%'</span><span style="color:#B392F0">;</span></span>
+<span class="line"><span style="color:#F97583">GRANT</span><span style="color:#F97583"> SELECT</span><span style="color:#F97583"> ON</span><span style="color:#B392F0"> mysql.proxies_priv </span><span style="color:#F97583">TO</span><span style="color:#FFAB70"> 'maxscale_user'</span><span style="color:#B392F0">@</span><span style="color:#FFAB70">'%'</span><span style="color:#B392F0">;</span></span>
+<span class="line"><span style="color:#F97583">GRANT</span><span style="color:#F97583"> SELECT</span><span style="color:#F97583"> ON</span><span style="color:#B392F0"> mysql.roles_mapping </span><span style="color:#F97583">TO</span><span style="color:#FFAB70"> 'maxscale_user'</span><span style="color:#B392F0">@</span><span style="color:#FFAB70">'%'</span><span style="color:#B392F0">;</span></span>
+<span class="line"><span style="color:#F97583">GRANT</span><span style="color:#B392F0"> SHOW DATABASES </span><span style="color:#F97583">ON</span><span style="color:#F97583"> *</span><span style="color:#B392F0">.</span><span style="color:#F97583">*</span><span style="color:#F97583"> TO</span><span style="color:#FFAB70"> 'maxscale_user'</span><span style="color:#B392F0">@</span><span style="color:#FFAB70">'%'</span><span style="color:#B392F0">;</span></span>
+<span class="line"></span></code></pre>
+<p>Create client user account. Your app will use this user to connect to MaxScale</p>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#F97583">CREATE</span><span style="color:#F97583"> USER</span><span style="color:#B392F0"> 'app_user'@</span><span style="color:#FFAB70">'%'</span><span style="color:#B392F0"> IDENTIFIED </span><span style="color:#F97583">BY</span><span style="color:#FFAB70"> 'app_password'</span><span style="color:#B392F0">;</span></span>
+<span class="line"></span></code></pre>
+<p>Start MaxScale</p>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">systemctl</span><span style="color:#9DB1C5"> start</span><span style="color:#9DB1C5"> maxscale</span></span>
+<span class="line"></span></code></pre>
+<p>Checking MaxScale status with MaxCtrl</p>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">maxctrl</span><span style="color:#9DB1C5"> list</span><span style="color:#9DB1C5"> services</span></span>
+<span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">maxctrl</span><span style="color:#9DB1C5"> list</span><span style="color:#9DB1C5"> servers</span></span>
+<span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">maxctrl</span><span style="color:#9DB1C5"> list</span><span style="color:#9DB1C5"> listeners</span></span>
+<span class="line"></span></code></pre>
+<h3 id="3-enable-maxscale-maxgui">3. Enable MaxScale MaxGUI</h3>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="ini"><code><span class="line"><span style="color:#B392F0">[maxscale]</span></span>
+<span class="line"><span style="color:#F97583">admin_host=</span><span style="color:#B392F0">0.0.0.0</span></span>
+<span class="line"><span style="color:#F97583">admin_secure_gui=</span><span style="color:#B392F0">false</span></span>
+<span class="line"></span></code></pre>
+<p>You can access the MaxGUI monitoring dashboard with the port <code>8989</code>. Eg: <a href="">http://172.31.33.100:8989</a></p>
+<p>MaxGUI uses the same credentials as <code>maxctrl</code>. The default username is <code>admin</code> with <code>mariadb</code> as the password.</p>
+<h3 id="4-configure-firewall-1">4. Configure Firewall</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Port</th><th>Purpose</th></tr></thead><tbody><tr><td>8989</td><td>MaxGUI monitoring dashboard</td></tr></tbody></table>
+<h3 id="5-verify-1">5. Verify</h3>
+<p>You can connect to the proxy with:</p>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#B392F0">mariadb </span><span style="color:#F97583">-</span><span style="color:#B392F0">h </span><span style="color:#F8F8F8">172</span><span style="color:#B392F0">.</span><span style="color:#F8F8F8">31</span><span style="color:#B392F0">.</span><span style="color:#F8F8F8">33</span><span style="color:#B392F0">.</span><span style="color:#F8F8F8">100</span><span style="color:#F97583"> -</span><span style="color:#B392F0">u app_user </span><span style="color:#F97583">-</span><span style="color:#B392F0">p</span></span>
+<span class="line"></span></code></pre>
+<h2 id="conclusion">Conclusion</h2>
 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, ipsum.</p>
-<h3 id="references">References</h3>
-<p><a href="https://galeracluster.com/2024/12/mariadb-galera-cluster-with-mariadb-maxscale-getting-started-with-read-write-split/">https://galeracluster.com/2024/12/mariadb-galera-cluster-with-mariadb-maxscale-getting-started-with-read-write-split/</a></p> </article> </div> </div>  </body></html> 
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://mariadb.com/kb/en/mariadb-maxscale-2501-maxscale-2501-read-write-splitting-with-mariadb-maxscale/">https://mariadb.com/kb/en/mariadb-maxscale-2501-maxscale-2501-read-write-splitting-with-mariadb-maxscale</a></li>
+<li><a href="https://mariadb.com/kb/en/mariadb-maxscale-25-01-getting-started/">https://mariadb.com/kb/en/mariadb-maxscale-25-01-getting-started</a></li>
+<li><a href="https://mariadb.com/kb/en/mariadb-maxscale-25-01-tutorials/">https://mariadb.com/kb/en/mariadb-maxscale-25-01-tutorials</a></li>
+<li><a href="https://galeracluster.com/2024/12/mariadb-galera-cluster-with-mariadb-maxscale-getting-started-with-read-write-split/">https://galeracluster.com/2024/12/mariadb-galera-cluster-with-mariadb-maxscale-getting-started-with-read-write-split</a></li>
+</ul> </article> </div> </div>  </body></html> 
