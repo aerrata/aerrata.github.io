@@ -160,7 +160,7 @@
 <span class="line"><span style="color:#F97583">CREATE</span><span style="color:#F97583"> TABLE</span><span style="color:#B392F0"> foods (id </span><span style="color:#F97583">INT</span><span style="color:#B392F0"> AUTO_INCREMENT </span><span style="color:#F97583">PRIMARY KEY</span><span style="color:#B392F0">, </span><span style="color:#F97583">name</span><span style="color:#F97583"> VARCHAR</span><span style="color:#B392F0">(</span><span style="color:#F8F8F8">50</span><span style="color:#B392F0">), created_at </span><span style="color:#F97583">TIMESTAMP</span><span style="color:#F97583"> DEFAULT</span><span style="color:#B392F0"> CURRENT_TIMESTAMP);</span></span>
 <span class="line"><span style="color:#F97583">INSERT INTO</span><span style="color:#B392F0"> foods (</span><span style="color:#F97583">name</span><span style="color:#B392F0">) </span><span style="color:#F97583">VALUES</span><span style="color:#B392F0"> (</span><span style="color:#FFAB70">'Nasi lemak'</span><span style="color:#B392F0">), (</span><span style="color:#FFAB70">'Aglio olio'</span><span style="color:#B392F0">), (</span><span style="color:#FFAB70">'Chicken chop'</span><span style="color:#B392F0">);</span></span>
 <span class="line"></span></code></pre>
-<p>Then in the other nodes:</p>
+<p>Then you can verify then table contents in the other nodes:</p>
 <pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#F97583">SELECT</span><span style="color:#F97583"> *</span><span style="color:#F97583"> FROM</span><span style="color:#B392F0"> foods;</span></span>
 <span class="line"></span></code></pre>
 <h2 id="setup-mariadb-maxscale">Setup MariaDB MaxScale</h2>
