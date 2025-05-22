@@ -97,13 +97,13 @@
 <span class="line"><span style="color:#F97583">wsrep_provider=</span><span style="color:#B392F0">/usr/lib/libgalera_smm.so</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#F97583">wsrep_cluster_name=</span><span style="color:#FFAB70">"galera"</span></span>
-<span class="line"><span style="color:#F97583">wsrep_cluster_address=</span><span style="color:#FFAB70">"gcomm://172.31.33.101,172.31.33.102,172.31.33.103"</span></span>
+<span class="line"><span style="color:#F97583">wsrep_cluster_address=</span><span style="color:#FFAB70">"gcomm://172.31.33.101,172.31.33.102,172.31.33.103"</span><span style="color:#6B737C"> # Your cluster nodes IP</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#F97583">wsrep_sst_method=</span><span style="color:#B392F0">rsync</span></span>
 <span class="line"><span style="color:#F97583">wsrep_sst_auth=</span><span style="color:#FFAB70">"sst_user:sst_password"</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#F97583">wsrep_node_name=</span><span style="color:#FFAB70">"node1"</span><span style="color:#6B737C"> # Specific node name</span></span>
-<span class="line"><span style="color:#F97583">wsrep_node_address=</span><span style="color:#FFAB70">"172.31.33.101"</span><span style="color:#6B737C"> # Specific node IP</span></span>
+<span class="line"><span style="color:#F97583">wsrep_node_name=</span><span style="color:#FFAB70">"node1"</span><span style="color:#6B737C"> # Your current node name</span></span>
+<span class="line"><span style="color:#F97583">wsrep_node_address=</span><span style="color:#FFAB70">"172.31.33.101"</span><span style="color:#6B737C"> # Your current node IP</span></span>
 <span class="line"></span></code></pre>
 <h3 id="3-configure-user">3. Configure User</h3>
 <pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#F97583">CREATE</span><span style="color:#F97583"> USER</span><span style="color:#B392F0"> 'sst_user'@</span><span style="color:#FFAB70">'%'</span><span style="color:#B392F0"> IDENTIFIED </span><span style="color:#F97583">BY</span><span style="color:#FFAB70"> 'sst_password'</span><span style="color:#B392F0">;</span></span>
