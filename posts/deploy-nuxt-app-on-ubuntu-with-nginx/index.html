@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en" class="dark"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.ico"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v4.15.10"><title>Deploy Nuxt App on Ubuntu with Nginx and PM2</title><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/index.BoXkdlhy.css">
+<!DOCTYPE html><html lang="en" class="dark"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.ico"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v4.15.10"><title>Deploy Next.js App on Ubuntu with Nginx and PM2</title><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/index.BoXkdlhy.css">
 <style>.footnotes{margin-top:3.5rem}@media (min-width: 768px){.footnotes{margin-top:6rem}}.footnotes ol li p{margin:0}
 @keyframes astroFadeInOut{0%{opacity:1}to{opacity:0}}@keyframes astroFadeIn{0%{opacity:0;mix-blend-mode:plus-lighter}to{opacity:1;mix-blend-mode:plus-lighter}}@keyframes astroFadeOut{0%{opacity:1;mix-blend-mode:plus-lighter}to{opacity:0;mix-blend-mode:plus-lighter}}@keyframes astroSlideFromRight{0%{transform:translate(100%)}}@keyframes astroSlideFromLeft{0%{transform:translate(-100%)}}@keyframes astroSlideToRight{to{transform:translate(100%)}}@keyframes astroSlideToLeft{to{transform:translate(-100%)}}@media (prefers-reduced-motion){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}[data-astro-transition-scope]{animation:none!important}}
 </style><script type="module" src="/_astro/hoisted.fDDyMQpn.js"></script><style>[data-astro-transition-scope="astro-qzijietr-1"] { view-transition-name: post-deploy-nuxt-app-on-ubuntu-with-nginx; }@layer astro { ::view-transition-old(post-deploy-nuxt-app-on-ubuntu-with-nginx) { 
@@ -37,84 +37,99 @@
 	animation-duration: 180ms;
 	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
 	animation-fill-mode: both;
-	animation-name: astroFadeIn; }</style></head><body> <nav class="fixed left-0 right-0 top-0 z-50 flex justify-center px-4"> <div class="w-full max-w-full py-12 md:max-w-2xl lg:max-w-5xl"> <div class="flex items-center justify-between"> <div> <a href="/" class="relative"> <img src="/_astro/hecker.Dslp7-O6_eeR8r.avif" alt="hecker" class="absolute inset-0 h-10 w-10 animate-[spin_30s_linear_infinite] rounded-full blur-lg transition duration-200 md:h-14 md:w-14" width="1280" height="1024" loading="lazy" decoding="async"> <img src="/_astro/hecker.Dslp7-O6_eeR8r.avif" alt="hecker" class="relative h-10 w-10 animate-[spin_30s_linear_infinite] rounded-full md:h-14 md:w-14" width="1280" height="1024" loading="lazy" decoding="async"> </a> </div> <div class="flex items-center"> <a href="/posts" class="border-b-2 text-sm font-semibold border-primary">Today I Learned;</a> </div> </div> </div> </nav>  <div class="flex justify-center px-4"> <div class="w-full max-w-full py-32 md:max-w-3xl"> <h1 class="pb-6 text-2xl font-bold md:text-3xl" data-astro-transition-scope="astro-qzijietr-1">Deploy Nuxt App on Ubuntu with Nginx and PM2</h1> <div class="flex space-x-2 text-xs tracking-wider text-muted-foreground md:text-sm"> <p> <time datetime="2024-06-30T00:00:00.000Z"> Jun 30, 2024 </time> </p> <span>&middot;</span> <a href="/tags/linux">#linux</a><a href="/tags/nginx">#nginx</a><a href="/tags/pm2">#pm2</a><a href="/tags/nuxtjs">#nuxtjs</a> </div> <div class="relative mt-20">   </div> <article class="prose prose-sm prose-foreground mt-20 max-w-none md:prose-base prose-code:text-xs md:prose-code:text-sm"> <h3 id="install-nodejs">Install Node.js</h3>
-<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">curl </span><span style="color:#9DB1C5">-o-</span><span style="color:#9DB1C5"> https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> bash</span></span>
-<span class="line"><span style="color:#F97583">export</span><span style="color:#B392F0"> NVM_DIR</span><span style="color:#F97583">=</span><span style="color:#FFAB70">"$HOME/.nvm"</span><span style="color:#B392F0">\n[ </span><span style="color:#F97583">-s</span><span style="color:#FFAB70"> "$NVM_DIR/nvm.sh"</span><span style="color:#B392F0"> ] </span><span style="color:#BBBBBB">&#x26;&#x26;</span><span style="color:#B392F0"> \. </span><span style="color:#FFAB70">"$NVM_DIR/nvm.sh"</span></span>
-<span class="line"><span style="color:#B392F0">NODE_VERSION</span><span style="color:#F97583">=</span><span style="color:#9DB1C5">22</span></span>
-<span class="line"><span style="color:#B392F0">nvm </span><span style="color:#9DB1C5">install</span><span style="color:#B392F0"> $NODE_VERSION</span></span>
-<span class="line"><span style="color:#B392F0">node </span><span style="color:#9DB1C5">-v</span></span>
+	animation-name: astroFadeIn; }</style></head><body> <nav class="fixed left-0 right-0 top-0 z-50 flex justify-center px-4"> <div class="w-full max-w-full py-12 md:max-w-2xl lg:max-w-5xl"> <div class="flex items-center justify-between"> <div> <a href="/" class="relative"> <img src="/_astro/hecker.Dslp7-O6_eeR8r.avif" alt="hecker" class="absolute inset-0 h-10 w-10 animate-[spin_30s_linear_infinite] rounded-full blur-lg transition duration-200 md:h-14 md:w-14" width="1280" height="1024" loading="lazy" decoding="async"> <img src="/_astro/hecker.Dslp7-O6_eeR8r.avif" alt="hecker" class="relative h-10 w-10 animate-[spin_30s_linear_infinite] rounded-full md:h-14 md:w-14" width="1280" height="1024" loading="lazy" decoding="async"> </a> </div> <div class="flex items-center"> <a href="/posts" class="border-b-2 text-sm font-semibold border-primary">Today I Learned;</a> </div> </div> </div> </nav>  <div class="flex justify-center px-4"> <div class="w-full max-w-full py-32 md:max-w-3xl"> <h1 class="pb-6 text-2xl font-bold md:text-3xl" data-astro-transition-scope="astro-qzijietr-1">Deploy Next.js App on Ubuntu with Nginx and PM2</h1> <div class="flex space-x-2 text-xs tracking-wider text-muted-foreground md:text-sm"> <p> <time datetime="2024-06-30T00:00:00.000Z"> Jun 30, 2024 </time> </p> <span>&middot;</span> <a href="/tags/linux">#linux</a><a href="/tags/nginx">#nginx</a><a href="/tags/pm2">#pm2</a><a href="/tags/nextjs">#nextjs</a> </div> <div class="relative mt-20">   </div> <article class="prose prose-sm prose-foreground mt-20 max-w-none md:prose-base prose-code:text-xs md:prose-code:text-sm"> <p>PM2 is a production process manager for Node.js applications with a built-in load balancer. It allows you to keep applications alive forever, to reload them without downtime and to facilitate common system admin tasks.</p>
+<hr>
+<h2 id="setup">Setup</h2>
+<h3 id="1-install-nodejs">1. Install Node.js</h3>
+<p>We’ll use <code>nvm</code> to install Node.js.</p>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">curl </span><span style="color:#9DB1C5">-o-</span><span style="color:#9DB1C5"> https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> bash</span></span>
+<span class="line"><span style="color:#B392F0">\. </span><span style="color:#FFAB70">"$HOME/.nvm/nvm.sh"</span></span>
+<span class="line"><span style="color:#B392F0">nvm </span><span style="color:#9DB1C5">install</span><span style="color:#F8F8F8"> 24</span></span>
 <span class="line"></span></code></pre>
-<h3 id="install-pm2">Install PM2</h3>
-<p>PM2 is a production process manager for Node.js applications with a built-in load balancer. It allows you to keep applications alive forever, to reload them without downtime and to facilitate common system admin tasks.</p>
+<p>Install <code>bun</code>.</p>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">npm</span><span style="color:#9DB1C5"> install</span><span style="color:#9DB1C5"> -g</span><span style="color:#9DB1C5"> bun</span></span>
+<span class="line"></span></code></pre>
+<h3 id="2-setup-nextjs-app">2. Setup Next.js App</h3>
+<p>Install PM2.</p>
 <pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">npm</span><span style="color:#9DB1C5"> install</span><span style="color:#9DB1C5"> -g</span><span style="color:#9DB1C5"> pm2</span></span>
 <span class="line"></span></code></pre>
-<h3 id="clone-the-nuxt-app">Clone The Nuxt App</h3>
-<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">cd</span></span>
-<span class="line"><span style="color:#B392F0">git </span><span style="color:#9DB1C5">clone</span><span style="color:#9DB1C5"> https://user@bitbucket.org/org/nuxt-app.git</span><span style="color:#9DB1C5"> nuxt-app</span></span>
-<span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">mv</span><span style="color:#9DB1C5"> nuxt-app</span><span style="color:#9DB1C5"> /var/www</span></span>
-<span class="line"><span style="color:#B392F0">cd </span><span style="color:#9DB1C5">/var/www/nuxt-app</span></span>
-<span class="line"></span></code></pre>
-<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">npm </span><span style="color:#9DB1C5">ci</span></span>
-<span class="line"><span style="color:#B392F0">npm </span><span style="color:#9DB1C5">run</span><span style="color:#9DB1C5"> build</span></span>
-<span class="line"></span></code></pre>
-<p>Create a new <code>ecosystem.config.cjs</code> file in your project root directory. You should commit this file.</p>
+<p>Create a new <code>ecosystem.config.js</code> file in your project root directory. You should commit this file.</p>
 <pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#79B8FF">module</span><span style="color:#B392F0">.</span><span style="color:#79B8FF">exports</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> {</span></span>
 <span class="line"><span style="color:#B392F0">  apps</span><span style="color:#F97583">:</span><span style="color:#B392F0"> [</span></span>
 <span class="line"><span style="color:#B392F0">    {</span></span>
-<span class="line"><span style="color:#B392F0">      name</span><span style="color:#F97583">:</span><span style="color:#FFAB70"> 'NuxtAppName'</span><span style="color:#BBBBBB">,</span></span>
+<span class="line"><span style="color:#B392F0">      name</span><span style="color:#F97583">:</span><span style="color:#FFAB70"> 'next-app'</span><span style="color:#BBBBBB">,</span></span>
 <span class="line"><span style="color:#B392F0">      port</span><span style="color:#F97583">:</span><span style="color:#FFAB70"> '3000'</span><span style="color:#BBBBBB">,</span></span>
-<span class="line"><span style="color:#B392F0">      exec_mode</span><span style="color:#F97583">:</span><span style="color:#FFAB70"> 'cluster'</span><span style="color:#BBBBBB">,</span></span>
-<span class="line"><span style="color:#B392F0">      instances</span><span style="color:#F97583">:</span><span style="color:#FFAB70"> 'max'</span><span style="color:#BBBBBB">,</span></span>
-<span class="line"><span style="color:#B392F0">      script</span><span style="color:#F97583">:</span><span style="color:#FFAB70"> './.output/server/index.mjs'</span><span style="color:#BBBBBB">,</span></span>
+<span class="line"><span style="color:#B392F0">      script</span><span style="color:#F97583">:</span><span style="color:#FFAB70"> 'npm'</span><span style="color:#BBBBBB">,</span></span>
+<span class="line"><span style="color:#B392F0">      args</span><span style="color:#F97583">:</span><span style="color:#FFAB70"> 'start'</span><span style="color:#BBBBBB">,</span></span>
 <span class="line"><span style="color:#B392F0">      env</span><span style="color:#F97583">:</span><span style="color:#B392F0"> {</span></span>
 <span class="line"><span style="color:#B392F0">        NODE_ENV</span><span style="color:#F97583">:</span><span style="color:#FFAB70"> 'development'</span><span style="color:#BBBBBB">,</span></span>
+<span class="line"><span style="color:#B392F0">        AWS_REGION</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> process</span><span style="color:#B392F0">.</span><span style="color:#79B8FF">env</span><span style="color:#B392F0">.</span><span style="color:#79B8FF">AWS_REGION</span><span style="color:#BBBBBB">,</span></span>
+<span class="line"><span style="color:#B392F0">        AWS_ACCESS_KEY_ID</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> process</span><span style="color:#B392F0">.</span><span style="color:#79B8FF">env</span><span style="color:#B392F0">.</span><span style="color:#79B8FF">AWS_ACCESS_KEY_ID</span><span style="color:#BBBBBB">,</span></span>
+<span class="line"><span style="color:#B392F0">        AWS_SECRET_ACCESS_KEY</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> process</span><span style="color:#B392F0">.</span><span style="color:#79B8FF">env</span><span style="color:#B392F0">.</span><span style="color:#79B8FF">AWS_SECRET_ACCESS_KEY</span><span style="color:#BBBBBB">,</span></span>
 <span class="line"><span style="color:#6B737C">        // Add your env variables here</span></span>
 <span class="line"><span style="color:#B392F0">      }</span><span style="color:#BBBBBB">,</span></span>
 <span class="line"><span style="color:#B392F0">    }</span><span style="color:#BBBBBB">,</span></span>
 <span class="line"><span style="color:#B392F0">  ]</span><span style="color:#BBBBBB">,</span></span>
 <span class="line"><span style="color:#B392F0">}</span></span>
 <span class="line"></span></code></pre>
-<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">pm2 </span><span style="color:#9DB1C5">start</span><span style="color:#9DB1C5"> ecosystem.config.cjs</span></span>
-<span class="line"><span style="color:#B392F0">pm2 </span><span style="color:#9DB1C5">save</span><span style="color:#6B737C"> # Save the process lists</span></span>
-<span class="line"><span style="color:#B392F0">pm2 </span><span style="color:#9DB1C5">startup</span><span style="color:#9DB1C5"> systemd</span><span style="color:#6B737C"> # Ensure to start the daemon on reboot</span></span>
-<span class="line"><span style="color:#B392F0">pm2 </span><span style="color:#9DB1C5">list</span><span style="color:#6B737C"> # See all processes</span></span>
+<p>Clone and build the app.</p>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">cd</span></span>
+<span class="line"><span style="color:#B392F0">git </span><span style="color:#9DB1C5">clone</span><span style="color:#9DB1C5"> git@github.com:user/next-app.git</span><span style="color:#9DB1C5"> next-app</span></span>
+<span class="line"><span style="color:#B392F0">mv </span><span style="color:#9DB1C5">next-app</span><span style="color:#9DB1C5"> /var/www/next-app/</span></span>
+<span class="line"><span style="color:#B392F0">cd </span><span style="color:#9DB1C5">/var/www/next-app</span></span>
 <span class="line"></span></code></pre>
-<p>If you update the code, just reload pm2;</p>
-<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">pm2 </span><span style="color:#9DB1C5">reload</span><span style="color:#9DB1C5"> ecosystem.config.cjs</span></span>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">bun </span><span style="color:#9DB1C5">install</span><span style="color:#9DB1C5"> --frozen-lockfile</span></span>
+<span class="line"><span style="color:#B392F0">bun </span><span style="color:#9DB1C5">run</span><span style="color:#9DB1C5"> build</span></span>
 <span class="line"></span></code></pre>
-<h3 id="setup-nginx">Setup NGINX</h3>
+<p>Start the app in background via PM2.</p>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">pm2 </span><span style="color:#9DB1C5">start</span><span style="color:#9DB1C5"> ecosystem.config.js</span></span>
+<span class="line"><span style="color:#B392F0">pm2 </span><span style="color:#9DB1C5">save</span><span style="color:#6B737C">  # Save the process lists</span></span>
+<span class="line"><span style="color:#B392F0">pm2 </span><span style="color:#9DB1C5">startup</span></span>
+<span class="line"><span style="color:#B392F0">pm2 </span><span style="color:#9DB1C5">startup</span><span style="color:#9DB1C5"> systemd</span><span style="color:#9DB1C5"> -u</span><span style="color:#9DB1C5"> ubuntu</span><span style="color:#9DB1C5"> --hp</span><span style="color:#9DB1C5"> /home/ubuntu</span><span style="color:#6B737C">  # Ensure to start the daemon on reboot</span></span>
+<span class="line"><span style="color:#B392F0">pm2 </span><span style="color:#9DB1C5">list</span><span style="color:#6B737C">  # See all processes</span></span>
+<span class="line"></span></code></pre>
+<blockquote>
+<p>If you update your app, you can reload PM2 with:</p>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">pm2 </span><span style="color:#9DB1C5">reload</span><span style="color:#9DB1C5"> ecosystem.config.js</span></span>
+<span class="line"></span></code></pre>
+</blockquote>
+<h3 id="3-configure-nginx">3. Configure NGINX</h3>
+<p>Install NGINX</p>
 <pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">apt</span><span style="color:#9DB1C5"> install</span><span style="color:#9DB1C5"> nginx</span></span>
-<span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">nano</span><span style="color:#9DB1C5"> /etc/nginx/sites-available/nuxt-app</span></span>
 <span class="line"></span></code></pre>
+<p>Create a new file <code>/etc/nginx/sites-available/next-app</code>, and add:</p>
 <pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="nginx"><code><span class="line"><span style="color:#F97583">server</span><span style="color:#B392F0"> {</span></span>
-<span class="line"><span style="color:#F97583">    listen </span><span style="color:#F8F8F8">80</span><span style="color:#B392F0">;</span></span>
-<span class="line"><span style="color:#F97583">    server_name </span><span style="color:#B392F0">example.com;</span></span>
+<span class="line"><span style="color:#F97583">  listen </span><span style="color:#F8F8F8">80</span><span style="color:#B392F0">;</span></span>
+<span class="line"><span style="color:#F97583">  server_name </span><span style="color:#B392F0">_;</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#F97583">    location</span><span style="color:#B392F0"> / {</span></span>
-<span class="line"><span style="color:#F97583">        proxy_pass </span><span style="color:#B392F0">http://localhost:3000;</span></span>
-<span class="line"><span style="color:#F97583">        proxy_http_version </span><span style="color:#F8F8F8">1.1</span><span style="color:#B392F0">;</span></span>
-<span class="line"><span style="color:#F97583">        proxy_set_header </span><span style="color:#B392F0">Upgrade $http_upgrade;</span></span>
-<span class="line"><span style="color:#F97583">        proxy_set_header </span><span style="color:#B392F0">Connection </span><span style="color:#FFAB70">'upgrade'</span><span style="color:#B392F0">;</span></span>
-<span class="line"><span style="color:#F97583">        proxy_set_header </span><span style="color:#B392F0">Host $host;</span></span>
-<span class="line"><span style="color:#F97583">        proxy_cache_bypass </span><span style="color:#B392F0">$http_upgrade;</span></span>
-<span class="line"><span style="color:#B392F0">    }</span></span>
+<span class="line"><span style="color:#F97583">  location</span><span style="color:#B392F0"> / {</span></span>
+<span class="line"><span style="color:#F97583">    proxy_pass </span><span style="color:#B392F0">http://localhost:3000;</span></span>
+<span class="line"><span style="color:#F97583">    proxy_http_version </span><span style="color:#F8F8F8">1.1</span><span style="color:#B392F0">;</span></span>
+<span class="line"><span style="color:#F97583">    proxy_set_header </span><span style="color:#B392F0">Upgrade \$http_upgrade;</span></span>
+<span class="line"><span style="color:#F97583">    proxy_set_header </span><span style="color:#B392F0">Connection </span><span style="color:#FFAB70">'upgrade'</span><span style="color:#B392F0">;</span></span>
+<span class="line"><span style="color:#F97583">    proxy_set_header </span><span style="color:#B392F0">Host \$host;</span></span>
+<span class="line"><span style="color:#F97583">    proxy_cache_bypass </span><span style="color:#B392F0">\$http_upgrade;</span></span>
+<span class="line"><span style="color:#B392F0">  }</span></span>
 <span class="line"><span style="color:#B392F0">}</span></span>
 <span class="line"></span></code></pre>
-<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">ln</span><span style="color:#9DB1C5"> -s</span><span style="color:#9DB1C5"> /etc/nginx/sites-available/nuxt-app</span><span style="color:#9DB1C5"> /etc/nginx/sites-enabled/</span></span>
-<span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">nginx</span><span style="color:#9DB1C5"> -t</span></span>
+<p>Enable the site</p>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">rm</span><span style="color:#9DB1C5"> /etc/nginx/sites-enabled/default</span></span>
+<span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">ln</span><span style="color:#9DB1C5"> -s</span><span style="color:#9DB1C5"> /etc/nginx/sites-available/next-app</span><span style="color:#9DB1C5"> /etc/nginx/sites-enabled/</span></span>
+<span class="line"></span></code></pre>
+<p>Reload NGINX and PM2</p>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">pm2 </span><span style="color:#9DB1C5">reload</span><span style="color:#FFAB70"> 'next-app'</span></span>
+<span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">systemctl</span><span style="color:#9DB1C5"> enable</span><span style="color:#9DB1C5"> nginx</span></span>
 <span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">systemctl</span><span style="color:#9DB1C5"> restart</span><span style="color:#9DB1C5"> nginx</span></span>
 <span class="line"></span></code></pre>
-<h3 id="setup-firewall">Setup Firewall</h3>
+<h3 id="4-setup-firewall">4. Setup Firewall</h3>
 <pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">ufw</span><span style="color:#9DB1C5"> allow</span><span style="color:#9DB1C5"> 80,443/tcp</span></span>
 <span class="line"></span></code></pre>
-<h3 id="set-up-ssl-optional">Set Up SSL (Optional)</h3>
+<h3 id="5-set-up-ssl-optional">5. Set Up SSL (Optional)</h3>
 <p>To secure your site with HTTPS, you can use Let’s Encrypt to obtain an SSL certificate:</p>
 <pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">apt</span><span style="color:#9DB1C5"> install</span><span style="color:#9DB1C5"> certbot</span><span style="color:#9DB1C5"> python3-certbot-nginx</span></span>
 <span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">certbot</span><span style="color:#9DB1C5"> --nginx</span><span style="color:#9DB1C5"> -d</span><span style="color:#9DB1C5"> example.com</span></span>
 <span class="line"></span></code></pre>
-<h3 id="verify">Verify</h3>
-<p>Verify by accessing your site using domain or ip address in the web browser.</p>
-<h3 id="references">References</h3>
+<h2 id="references">References</h2>
 <ol>
 <li><a href="https://nodejs.org/en/download/package-manager">https://nodejs.org/en/download/package-manager</a></li>
 <li><a href="https://pm2.keymetrics.io/">https://pm2.keymetrics.io/</a></li>
