@@ -1,19 +1,19 @@
 <!DOCTYPE html><html lang="en" class="dark"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.ico"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v4.15.10"><title>Using SCP for Secure File Transfers</title><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/index.CaZhZkbr.css">
 <style>.footnotes{margin-top:3.5rem}@media (min-width: 768px){.footnotes{margin-top:6rem}}.footnotes ol li p{margin:0}
 @keyframes astroFadeInOut{0%{opacity:1}to{opacity:0}}@keyframes astroFadeIn{0%{opacity:0;mix-blend-mode:plus-lighter}to{opacity:1;mix-blend-mode:plus-lighter}}@keyframes astroFadeOut{0%{opacity:1;mix-blend-mode:plus-lighter}to{opacity:0;mix-blend-mode:plus-lighter}}@keyframes astroSlideFromRight{0%{transform:translate(100%)}}@keyframes astroSlideFromLeft{0%{transform:translate(-100%)}}@keyframes astroSlideToRight{to{transform:translate(100%)}}@keyframes astroSlideToLeft{to{transform:translate(-100%)}}@media (prefers-reduced-motion){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}[data-astro-transition-scope]{animation:none!important}}
-</style><script type="module" src="/_astro/hoisted.fDDyMQpn.js"></script><style>[data-astro-transition-scope="astro-qzijietr-1"] { view-transition-name: post-using-scp-for-secure-file-transfers; }@layer astro { ::view-transition-old(post-using-scp-for-secure-file-transfers) { 
+</style><script type="module" src="/_astro/hoisted.fDDyMQpn.js"></script><style>[data-astro-transition-scope="astro-qzijietr-1"] { view-transition-name: post-using-scp-for-file-transfer; }@layer astro { ::view-transition-old(post-using-scp-for-file-transfer) { 
 	animation-duration: 180ms;
 	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
 	animation-fill-mode: both;
-	animation-name: astroFadeOut; }::view-transition-new(post-using-scp-for-secure-file-transfers) { 
+	animation-name: astroFadeOut; }::view-transition-new(post-using-scp-for-file-transfer) { 
 	animation-duration: 180ms;
 	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
 	animation-fill-mode: both;
-	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(post-using-scp-for-secure-file-transfers) { 
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(post-using-scp-for-file-transfer) { 
 	animation-duration: 180ms;
 	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
 	animation-fill-mode: both;
-	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(post-using-scp-for-secure-file-transfers) { 
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(post-using-scp-for-file-transfer) { 
 	animation-duration: 180ms;
 	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
 	animation-fill-mode: both;
@@ -37,13 +37,13 @@
 	animation-duration: 180ms;
 	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
 	animation-fill-mode: both;
-	animation-name: astroFadeIn; }</style></head><body> <nav class="fixed left-0 right-0 top-0 z-50 flex justify-center px-4"> <div class="w-full max-w-full py-12 md:max-w-2xl lg:max-w-5xl"> <div class="flex items-center justify-between"> <div> <a href="/" class="relative"> <img src="/_astro/hecker.Dslp7-O6_eeR8r.avif" alt="hecker" class="absolute inset-0 h-10 w-10 animate-[spin_30s_linear_infinite] rounded-full blur-lg transition duration-200 md:h-14 md:w-14" width="1280" height="1024" loading="lazy" decoding="async"> <img src="/_astro/hecker.Dslp7-O6_eeR8r.avif" alt="hecker" class="relative h-10 w-10 animate-[spin_30s_linear_infinite] rounded-full md:h-14 md:w-14" width="1280" height="1024" loading="lazy" decoding="async"> </a> </div> <div class="flex items-center"> <a href="/posts" class="border-b-2 text-sm font-semibold border-primary">Today I Learned;</a> </div> </div> </div> </nav>  <div class="flex justify-center px-4"> <div class="w-full max-w-full py-32 md:max-w-3xl"> <h1 class="pb-6 text-2xl font-bold md:text-3xl" data-astro-transition-scope="astro-qzijietr-1">Using SCP for Secure File Transfers</h1> <div class="flex space-x-2 text-xs tracking-wider text-muted-foreground md:text-sm"> <p> <time datetime="2024-11-24T00:00:00.000Z"> Nov 24, 2024 </time> </p> <span>&middot;</span> <a href="/tags/linux">#linux</a> </div> <div class="relative mt-20">   </div> <article class="prose prose-sm prose-foreground mt-20 max-w-none md:prose-base prose-code:text-xs md:prose-code:text-sm"> <p>The <strong>Secure Copy Protocol (SCP)</strong> is a simple and efficient way to securely transfer files between a local machine and a remote server, or between two remote systems. SCP uses SSH (Secure Shell) for encryption, ensuring that your data remains secure during transit.</p>
+	animation-name: astroFadeIn; }</style></head><body> <nav class="fixed left-0 right-0 top-0 z-50 flex justify-center px-4"> <div class="w-full max-w-full py-12 md:max-w-2xl lg:max-w-5xl"> <div class="flex items-center justify-between"> <div> <a href="/" class="relative"> <img src="/_astro/hecker.Dslp7-O6_eeR8r.avif" alt="hecker" class="absolute inset-0 h-10 w-10 animate-[spin_30s_linear_infinite] rounded-full blur-lg transition duration-200 md:h-14 md:w-14" width="1280" height="1024" loading="lazy" decoding="async"> <img src="/_astro/hecker.Dslp7-O6_eeR8r.avif" alt="hecker" class="relative h-10 w-10 animate-[spin_30s_linear_infinite] rounded-full md:h-14 md:w-14" width="1280" height="1024" loading="lazy" decoding="async"> </a> </div> <div class="flex items-center"> <a href="/posts" class="border-b-2 text-sm font-semibold border-primary">Today I Learned;</a> </div> </div> </div> </nav>  <div class="flex justify-center px-4"> <div class="w-full max-w-full py-32 md:max-w-3xl"> <h1 class="pb-6 text-2xl font-bold md:text-3xl" data-astro-transition-scope="astro-qzijietr-1">Using SCP for Secure File Transfers</h1> <div class="flex space-x-2 text-xs tracking-wider text-muted-foreground md:text-sm"> <p> <time datetime="2024-11-24T00:00:00.000Z"> Nov 24, 2024 </time> </p> <span>&middot;</span> <a href="/tags/linux">#linux</a> </div> <div class="relative mt-20">   </div> <article class="prose prose-sm prose-foreground mt-20 max-w-none md:prose-base prose-code:text-xs md:prose-code:text-sm"> <p>The Secure Copy Protocol (SCP) is a simple and efficient way to securely transfer files between a local machine and a remote server, or between two remote systems. SCP uses SSH (Secure Shell) for encryption, ensuring that your data remains secure during transit.</p>
 <hr>
-<h3 id="command-syntax">Command syntax</h3>
-<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">scp [options] source_file destination</span></span>
+<h2 id="command-syntax">Command Syntax</h2>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">scp [options] source destination</span></span>
 <span class="line"></span></code></pre>
 <ul>
-<li><strong>source_file</strong>: The file you want to transfer. This can be a local file path or a remote file path in the format <code>user@host:/path/to/file</code></li>
+<li><strong>source</strong>: The file you want to transfer. This can be a local file path or a remote file path in the format <code>user@host:/path/to/file</code></li>
 <li><strong>destination</strong>: The location where you want to copy the file. This can be a local path or a remote path in the same format as above</li>
 <li><strong>options</strong>: The location where you want to copy the file. This can be a local path or a remote path in the same format as above
 <ul>
@@ -55,11 +55,11 @@
 </ul>
 </li>
 </ul>
-<h3 id="copying-files-from-local-to-remote-server">Copying files from local to remote server</h3>
+<h2 id="copying-files-from-local-to-remote-server">Copying Files From Local To Remote Server</h2>
 <p>Copying <code>report.pdf</code> to the <code>/home/user/documents/</code> directory on the remote server</p>
 <pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">scp </span><span style="color:#9DB1C5">report.pdf</span><span style="color:#9DB1C5"> user@192.168.1.100:/home/user/documents/</span></span>
 <span class="line"></span></code></pre>
-<h3 id="copying-files-from-remote-to-local-machine">Copying files from remote to local machine</h3>
+<h2 id="copying-files-from-remote-to-local-machine">Copying Files From Remote To Local Machine</h2>
 <p>Downloading <code>report.pdf</code> from a remote server to your local machine</p>
 <pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">scp </span><span style="color:#9DB1C5">user@192.168.1.100:/home/user/reports/report.pdf</span><span style="color:#9DB1C5"> ~/Downloads/</span></span>
 <span class="line"></span></code></pre> </article> </div> </div>  </body></html> 

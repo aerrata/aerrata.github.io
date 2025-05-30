@@ -1,19 +1,19 @@
 <!DOCTYPE html><html lang="en" class="dark"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.ico"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v4.15.10"><title>Setup MariaDB Galera Cluster with MariaDB MaxScale on Ubuntu</title><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/index.CaZhZkbr.css">
 <style>.footnotes{margin-top:3.5rem}@media (min-width: 768px){.footnotes{margin-top:6rem}}.footnotes ol li p{margin:0}
 @keyframes astroFadeInOut{0%{opacity:1}to{opacity:0}}@keyframes astroFadeIn{0%{opacity:0;mix-blend-mode:plus-lighter}to{opacity:1;mix-blend-mode:plus-lighter}}@keyframes astroFadeOut{0%{opacity:1;mix-blend-mode:plus-lighter}to{opacity:0;mix-blend-mode:plus-lighter}}@keyframes astroSlideFromRight{0%{transform:translate(100%)}}@keyframes astroSlideFromLeft{0%{transform:translate(-100%)}}@keyframes astroSlideToRight{to{transform:translate(100%)}}@keyframes astroSlideToLeft{to{transform:translate(-100%)}}@media (prefers-reduced-motion){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}[data-astro-transition-scope]{animation:none!important}}
-</style><script type="module" src="/_astro/hoisted.fDDyMQpn.js"></script><style>[data-astro-transition-scope="astro-qzijietr-1"] { view-transition-name: post-setup-mariadb-galera-cluster-with-mariadb-maxscale-on-ubuntu; }@layer astro { ::view-transition-old(post-setup-mariadb-galera-cluster-with-mariadb-maxscale-on-ubuntu) { 
+</style><script type="module" src="/_astro/hoisted.fDDyMQpn.js"></script><style>[data-astro-transition-scope="astro-qzijietr-1"] { view-transition-name: post-mariadb-galera-cluster-with-maxscale-ubuntu; }@layer astro { ::view-transition-old(post-mariadb-galera-cluster-with-maxscale-ubuntu) { 
 	animation-duration: 180ms;
 	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
 	animation-fill-mode: both;
-	animation-name: astroFadeOut; }::view-transition-new(post-setup-mariadb-galera-cluster-with-mariadb-maxscale-on-ubuntu) { 
+	animation-name: astroFadeOut; }::view-transition-new(post-mariadb-galera-cluster-with-maxscale-ubuntu) { 
 	animation-duration: 180ms;
 	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
 	animation-fill-mode: both;
-	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(post-setup-mariadb-galera-cluster-with-mariadb-maxscale-on-ubuntu) { 
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(post-mariadb-galera-cluster-with-maxscale-ubuntu) { 
 	animation-duration: 180ms;
 	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
 	animation-fill-mode: both;
-	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(post-setup-mariadb-galera-cluster-with-mariadb-maxscale-on-ubuntu) { 
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(post-mariadb-galera-cluster-with-maxscale-ubuntu) { 
 	animation-duration: 180ms;
 	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
 	animation-fill-mode: both;
@@ -86,7 +86,7 @@
 <span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">mysql_secure_installation</span></span>
 <span class="line"></span></code></pre>
 <h3 id="2-configure-galera">2. Configure Galera</h3>
-<p>On <code>node1</code>, <code>node2</code>, and <code>node3</code>, edit <code>/etc/mysql/mariadb.conf.d/60-galera.cnf</code> and adjust like so:</p>
+<p>Edit <code>/etc/mysql/mariadb.conf.d/60-galera.cnf</code> and adjust like so:</p>
 <pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="ini"><code><span class="line"><span style="color:#B392F0">[galera]</span></span>
 <span class="line"><span style="color:#F97583">wsrep_on</span><span style="color:#F97583">                 =</span><span style="color:#B392F0"> ON</span></span>
 <span class="line"><span style="color:#F97583">wsrep_cluster_name</span><span style="color:#F97583">       =</span><span style="color:#FFAB70"> "MariaDB Galera Cluster"</span></span>
@@ -105,6 +105,13 @@
 <span class="line"></span>
 <span class="line"><span style="color:#F97583">wsrep_provider=</span><span style="color:#B392F0">/usr/lib/libgalera_smm.so</span></span>
 <span class="line"></span></code></pre>
+<p>Replace:</p>
+<ul>
+<li><code>gcomm://172.31.33.101,172.31.33.102,172.31.33.103</code> → Your cluster node IP addresses</li>
+<li><code>172.31.33.101</code> → The current node IP address</li>
+<li><code>node1</code> → The current node name</li>
+<li><code>sst_user:sst_password</code> → Your SST user</li>
+</ul>
 <h3 id="3-configure-user">3. Configure User</h3>
 <pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#F97583">CREATE</span><span style="color:#F97583"> USER</span><span style="color:#B392F0"> 'sst_user'@</span><span style="color:#FFAB70">'%'</span><span style="color:#B392F0"> IDENTIFIED </span><span style="color:#F97583">BY</span><span style="color:#FFAB70"> 'sst_password'</span><span style="color:#B392F0">;</span></span>
 <span class="line"><span style="color:#F97583">GRANT</span><span style="color:#B392F0"> RELOAD, LOCK TABLES, PROCESS, REPLICATION CLIENT </span><span style="color:#F97583">ON</span><span style="color:#F97583"> *</span><span style="color:#B392F0">.</span><span style="color:#F97583">*</span><span style="color:#F97583"> TO</span><span style="color:#FFAB70"> 'sst_user'</span><span style="color:#B392F0">@</span><span style="color:#FFAB70">'%'</span><span style="color:#B392F0">;</span></span>
