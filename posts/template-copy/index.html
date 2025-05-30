@@ -1,0 +1,82 @@
+<!DOCTYPE html><html lang="en" class="dark"> <head><meta charset="utf-8"><link rel="icon" type="image/svg+xml" href="/favicon.ico"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v4.15.10"><title>Configure Static IP using Netplan on Ubuntu</title><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/index.CaZhZkbr.css">
+<style>.footnotes{margin-top:3.5rem}@media (min-width: 768px){.footnotes{margin-top:6rem}}.footnotes ol li p{margin:0}
+@keyframes astroFadeInOut{0%{opacity:1}to{opacity:0}}@keyframes astroFadeIn{0%{opacity:0;mix-blend-mode:plus-lighter}to{opacity:1;mix-blend-mode:plus-lighter}}@keyframes astroFadeOut{0%{opacity:1;mix-blend-mode:plus-lighter}to{opacity:0;mix-blend-mode:plus-lighter}}@keyframes astroSlideFromRight{0%{transform:translate(100%)}}@keyframes astroSlideFromLeft{0%{transform:translate(-100%)}}@keyframes astroSlideToRight{to{transform:translate(100%)}}@keyframes astroSlideToLeft{to{transform:translate(-100%)}}@media (prefers-reduced-motion){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}[data-astro-transition-scope]{animation:none!important}}
+</style><script type="module" src="/_astro/hoisted.fDDyMQpn.js"></script><style>[data-astro-transition-scope="astro-qzijietr-1"] { view-transition-name: post-template-copy; }@layer astro { ::view-transition-old(post-template-copy) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(post-template-copy) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(post-template-copy) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(post-template-copy) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-qzijietr-1"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-qzijietr-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-qzijietr-1"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-qzijietr-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-qzijietr-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-qzijietr-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-qzijietr-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-qzijietr-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style></head><body> <nav class="fixed left-0 right-0 top-0 z-50 flex justify-center px-4"> <div class="w-full max-w-full py-12 md:max-w-2xl lg:max-w-5xl"> <div class="flex items-center justify-between"> <div> <a href="/" class="relative"> <img src="/_astro/hecker.Dslp7-O6_eeR8r.avif" alt="hecker" class="absolute inset-0 h-10 w-10 animate-[spin_30s_linear_infinite] rounded-full blur-lg transition duration-200 md:h-14 md:w-14" width="1280" height="1024" loading="lazy" decoding="async"> <img src="/_astro/hecker.Dslp7-O6_eeR8r.avif" alt="hecker" class="relative h-10 w-10 animate-[spin_30s_linear_infinite] rounded-full md:h-14 md:w-14" width="1280" height="1024" loading="lazy" decoding="async"> </a> </div> <div class="flex items-center"> <a href="/posts" class="border-b-2 text-sm font-semibold border-primary">Today I Learned;</a> </div> </div> </div> </nav>  <div class="flex justify-center px-4"> <div class="w-full max-w-full py-32 md:max-w-3xl"> <h1 class="pb-6 text-2xl font-bold md:text-3xl" data-astro-transition-scope="astro-qzijietr-1">Configure Static IP using Netplan on Ubuntu</h1> <div class="flex space-x-2 text-xs tracking-wider text-muted-foreground md:text-sm"> <p> <time datetime="2025-05-30T00:00:00.000Z"> May 30, 2025 </time> </p> <span>&middot;</span> <a href="/tags/linux">#linux</a> </div> <div class="relative mt-20">   </div> <article class="prose prose-sm prose-foreground mt-20 max-w-none md:prose-base prose-code:text-xs md:prose-code:text-sm"> <p>Assigning a static IP address is often required in server environments or when devices need to be consistently reachable on the network. On Ubuntu, this is managed using Netplan, a YAML-based network configuration utility.</p>
+<hr>
+<h2 id="setup">Setup</h2>
+<ol>
+<li>Find your network info:</li>
+</ol>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">ip </span><span style="color:#9DB1C5">link</span><span style="color:#6B737C">                  # Get interface name</span></span>
+<span class="line"><span style="color:#B392F0">ip </span><span style="color:#9DB1C5">route</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> grep </span><span style="color:#9DB1C5">default</span><span style="color:#6B737C">  # Get gateway</span></span>
+<span class="line"></span></code></pre>
+<ol start="2">
+<li>Create a new file <code>/etc/netplan/01-netcfg.yaml</code>. Add this:</li>
+</ol>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#F8F8F8">network</span><span style="color:#F97583">:</span></span>
+<span class="line"><span style="color:#F8F8F8">  version</span><span style="color:#F97583">:</span><span style="color:#F8F8F8"> 2</span></span>
+<span class="line"><span style="color:#F8F8F8">  renderer</span><span style="color:#F97583">:</span><span style="color:#FFAB70"> networkd</span></span>
+<span class="line"><span style="color:#F8F8F8">  ethernets</span><span style="color:#F97583">:</span></span>
+<span class="line"><span style="color:#F8F8F8">    eth0</span><span style="color:#F97583">:</span></span>
+<span class="line"><span style="color:#F8F8F8">      dhcp4</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> false</span></span>
+<span class="line"><span style="color:#F8F8F8">      addresses</span><span style="color:#F97583">:</span></span>
+<span class="line"><span style="color:#B392F0">        - </span><span style="color:#FFAB70">192.168.1.100/24</span></span>
+<span class="line"><span style="color:#F8F8F8">      routes</span><span style="color:#F97583">:</span></span>
+<span class="line"><span style="color:#B392F0">        - </span><span style="color:#F8F8F8">to</span><span style="color:#F97583">:</span><span style="color:#FFAB70"> default</span></span>
+<span class="line"><span style="color:#F8F8F8">          via</span><span style="color:#F97583">:</span><span style="color:#F8F8F8"> 192.168.1.1</span></span>
+<span class="line"><span style="color:#F8F8F8">      nameservers</span><span style="color:#F97583">:</span></span>
+<span class="line"><span style="color:#F8F8F8">        addresses</span><span style="color:#F97583">:</span></span>
+<span class="line"><span style="color:#B392F0">          - </span><span style="color:#F8F8F8">8.8.8.8</span></span>
+<span class="line"></span></code></pre>
+<p>Replace:</p>
+<ul>
+<li><code>eth0</code> → Your actual network interface</li>
+<li><code>192.168.1.100/24</code> → Your desired static IP and subnet</li>
+<li><code>192.168.1.1</code> → Your default gateway/router IP</li>
+<li><code>8.8.8.8</code> → Your preferred DNS servers</li>
+</ul>
+<ol start="3">
+<li>To apply the changes, run:</li>
+</ol>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">sudo </span><span style="color:#9DB1C5">netplan</span><span style="color:#9DB1C5"> apply</span></span>
+<span class="line"></span></code></pre>
+<h2 id="verify">Verify</h2>
+<p>Check with:</p>
+<pre class="astro-code min-dark" style="background-color:#1f1f1f;color:#b392f0; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">ip </span><span style="color:#9DB1C5">a</span></span>
+<span class="line"></span></code></pre> </article> </div> </div>  </body></html> 
